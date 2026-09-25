@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trung Tâm Giáo Dục - Thời Khóa Biểu & Lớp Học</title>
+    <title>Trung Tâm Thành Sơn - Học thật, Hiểu sâu</title>
     <style>
         :root {
             --primary-blue: #0284c7; 
@@ -103,17 +103,77 @@
             border-radius: 2px;
         }
 
+        /* --- 0. GIỚI THIỆU TRUNG TÂM --- */
+        .intro { background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%); color: #fff; padding: 70px 0 60px; }
+        .intro-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
+        .intro-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 4px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 14px; }
+        .intro h1 { font-size: 40px; line-height: 1.2; margin-bottom: 10px; }
+        .intro-slogan { font-size: 20px; font-weight: 600; color: #bae6fd; margin-bottom: 20px; }
+        .intro p.intro-text { font-size: 16px; color: #e0f2fe; margin-bottom: 14px; }
+        .intro-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+        .intro-btn { text-decoration: none; font-weight: 700; padding: 12px 24px; border-radius: 999px; font-size: 15px; transition: transform 0.2s; }
+        .intro-btn:hover { transform: translateY(-2px); }
+        .intro-btn.primary { background: #fff; color: #0c4a6e; }
+        .intro-btn.ghost { border: 2px solid #fff; color: #fff; }
+        .intro-values { display: grid; gap: 14px; }
+        .intro-value { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start; }
+        .intro-value .ic { font-size: 26px; line-height: 1; }
+        .intro-value h4 { font-size: 16px; margin-bottom: 2px; }
+        .intro-value p { font-size: 14px; color: #e0f2fe; }
+        .intro-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 45px; text-align: center; }
+        .intro-stat { background: rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 10px; }
+        .intro-stat b { display: block; font-size: 30px; color: #fff; }
+        .intro-stat span { font-size: 14px; color: #bae6fd; }
+
+        /* --- CHỦ TRUNG TÂM --- */
+        .owner-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 36px;
+            align-items: center;
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-left: 6px solid var(--primary-blue);
+            border-radius: 16px;
+            padding: 32px 36px;
+            box-shadow: 0 6px 20px rgba(2,132,199,0.08);
+        }
+        .owner-photo {
+            position: relative;
+            overflow: hidden;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-blue);
+            background: #f0f9ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+        .owner-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .owner-role { display: inline-block; background: #e0f2fe; color: var(--primary-blue); font-size: 13px; font-weight: 700; padding: 3px 14px; border-radius: 999px; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .owner-card h3 { font-size: 28px; color: var(--dark-blue); margin-bottom: 10px; }
+        .owner-card p { font-size: 15px; color: var(--text-dark); margin-bottom: 10px; }
+        .owner-contact { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+        .owner-btn { text-decoration: none; font-weight: 700; font-size: 15px; padding: 11px 22px; border-radius: 999px; transition: transform 0.2s; }
+        .owner-btn:hover { transform: translateY(-2px); }
+        .owner-btn.call { background: var(--primary-blue); color: var(--white); }
+        .owner-btn.zalo { border: 2px solid var(--primary-blue); color: var(--primary-blue); }
+        .footer-phone { margin-top: 8px; }
+        .footer-phone a { color: #e0f2fe; font-weight: 700; text-decoration: none; }
+
         /* --- 1. ĐỘI NGŨ GIÁO VIÊN --- */
         .teacher-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .teacher-card {
             background: var(--white);
             border-radius: 12px;
-            padding: 25px 15px;
+            padding: 30px 20px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             border: 1px solid #e2e8f0;
@@ -126,8 +186,10 @@
         }
 
         .teacher-avatar {
-            width: 80px;
-            height: 80px;
+            position: relative;
+            overflow: hidden;
+            width: 110px;
+            height: 110px;
             background-color: #f0f9ff;
             border: 2px solid var(--primary-blue);
             border-radius: 50%;
@@ -135,29 +197,30 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 35px;
-            overflow: hidden; /* Đảm bảo bo tròn ảnh */
+            font-size: 45px;
         }
 
         .teacher-avatar img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Giữ ảnh không móp méo */
+            object-fit: cover;
+            object-position: center top;
         }
 
         .teacher-card h3 {
-            font-size: 17px;
+            font-size: 18px;
             margin-bottom: 6px;
-            white-space: nowrap;
         }
 
         .teacher-subject {
             display: inline-block;
             background-color: #e0f2fe;
             color: var(--primary-blue);
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
-            padding: 2px 10px;
+            padding: 2px 12px;
             border-radius: 12px;
             margin-bottom: 12px;
         }
@@ -169,7 +232,7 @@
 
         .class-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
         }
 
@@ -181,7 +244,7 @@
         }
 
         .class-card h3 {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 10px;
             color: var(--dark-blue);
         }
@@ -190,6 +253,22 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 8px;
+        }
+
+        .class-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .class-meta span {
+            background: #e0f2fe;
+            color: var(--dark-blue);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: 999px;
         }
 
         /* --- 3. THỜI KHÓA BIỂU --- */
@@ -206,6 +285,7 @@
             border-collapse: collapse;
             min-width: 800px;
             text-align: center;
+            table-layout: fixed;
         }
 
         th, td {
@@ -259,6 +339,94 @@
             border: 1px solid #e0f2fe;
         }
 
+        .tkb-cell .class-code { font-size: 14px; }
+        .tkb-teacher {
+            display: block;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .tkb-empty { color: #cbd5e1; }
+        .tkb-note {
+            margin-top: 14px;
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* --- TAB CƠ SỞ --- */
+        .campus-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .campus-tab {
+            border: 2px solid var(--border-color);
+            background: var(--white);
+            color: var(--text-dark);
+            border-radius: 999px;
+            padding: 10px 22px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .campus-tab:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+        .campus-tab.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: var(--white);
+        }
+        .campus-panel { display: none; }
+        .campus-panel.active { display: block; }
+        .campus-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px 30px;
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+        }
+        .campus-info h3 { color: var(--dark-blue); font-size: 19px; }
+        .campus-info p { font-size: 15px; color: var(--text-dark); }
+        .campus-teachers { font-size: 15px; color: var(--dark-blue); font-weight: 600; align-self: center; }
+        .buoi-row td {
+            background: var(--dark-blue);
+            color: var(--white);
+            font-weight: 700;
+            text-align: left;
+            padding: 8px 14px;
+            letter-spacing: 0.5px;
+            font-size: 14px;
+        }
+        .time-col small { display: block; font-weight: 500; color: var(--text-muted); }
+        .tkb-cell .class-code + .tkb-teacher + .class-code { margin-top: 8px; }
+        th.today { background: var(--primary-blue); color: var(--white); }
+        td.today { background: #f0f9ff; }
+        .campus-address-list { margin-top: 10px; line-height: 1.9; }
+
+        /* --- CÔNG KHAI HỌC PHÍ --- */
+        .fee-section { background-color: var(--white); }
+        .fee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        .fee-card { background: var(--bg-light); border: 1px solid #e2e8f0; border-radius: 14px; padding: 30px 24px; text-align: center; position: relative; transition: transform 0.3s, border-color 0.3s; }
+        .fee-card:hover { transform: translateY(-5px); border-color: var(--primary-blue); }
+        .fee-card.popular { border: 2px solid var(--primary-blue); background: #f0f9ff; }
+        .fee-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--primary-blue); color: var(--white); font-size: 12px; font-weight: 700; padding: 3px 14px; border-radius: 999px; white-space: nowrap; }
+        .fee-icon { font-size: 36px; margin-bottom: 8px; }
+        .fee-card h3 { font-size: 19px; color: var(--dark-blue); margin-bottom: 4px; }
+        .fee-size { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+        .fee-price { font-size: 32px; font-weight: 800; color: var(--primary-blue); line-height: 1.2; }
+        .fee-price small { font-size: 15px; font-weight: 600; color: var(--text-muted); }
+        .fee-price.deal { font-size: 26px; }
+        .fee-desc { margin-top: 14px; font-size: 14px; color: var(--text-muted); }
+        .fee-note { margin-top: 30px; background: #f0f9ff; border-left: 5px solid var(--primary-blue); border-radius: 8px; padding: 14px 20px; font-size: 14px; color: var(--text-dark); }
+
         /* --- FOOTER --- */
         footer {
             background-color: var(--dark-blue);
@@ -268,71 +436,363 @@
             font-size: 14px;
         }
 
+        @media (max-width: 860px) {
+            .intro-grid { grid-template-columns: 1fr; }
+            .intro h1 { font-size: 30px; }
+            .intro-stats { grid-template-columns: repeat(2, 1fr); }
+            .owner-card { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 28px 22px; }
+            .owner-photo { width: 160px; height: 160px; }
+            .owner-contact { justify-content: center; }
+        }
+
         @media (max-width: 768px) {
             nav { flex-direction: column; gap: 15px; }
-            .nav-links { gap: 15px; }
+            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- THANH MENU -->
+    <!-- NAV BAR -->
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">🏫 TRUNG TÂM GIÁO DỤC</a>
+                <a href="#" class="logo">🏫 TRUNG TÂM THÀNH SƠN</a>
                 <ul class="nav-links">
+                    <li><a href="#gioithieu">Giới Thiệu</a></li>
+                    <li><a href="#chutrungtam">Chủ Trung Tâm</a></li>
                     <li><a href="#giaovien">Giáo Viên</a></li>
                     <li><a href="#lophoc">Lớp Học</a></li>
                     <li><a href="#thoikhoabieu">Thời Khóa Biểu</a></li>
+                    <li><a href="#hocphi">Học Phí</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- ĐỘI NGŨ GIÁO VIÊN -->
-    <section id="giaovien" class="container">
-        <h2 class="section-title">Đội Ngũ Giáo Viên Tâm Huyết</h2>
-        <div class="teacher-grid">
-            <!-- 1. CÔ DIỆP -->
-            <div class="teacher-card">
-                <div class="teacher-avatar">👩‍🏫</div>
-                <h3>Hồ Thị Ngọc Diệp</h3>
-                <span class="teacher-subject">Bộ môn Toán Học</span>
-                <p style="font-size: 14px; color: var(--text-muted);">Hơn 10 năm kinh nghiệm luyện thi trường chuyên, bứt phá tư duy logic.</p>
-            </div>
-            <!-- 2. THẦY SƠN -->
-            <div class="teacher-card">
-                <div class="teacher-avatar">👨‍🏫</div>
-                <h3>Nguyễn Thành Sơn</h3>
-                <span class="teacher-subject">Bộ môn Vật Lý</span>
-                <p style="font-size: 14px; color: var(--text-muted);">Phương pháp giảng dạy trực quan, giúp học sinh liên hệ thực tế hiệu quả.</p>
-            </div>
-            <!-- 3. THẦY THƯỢNG -->
-            <div class="teacher-card">
-                <div class="teacher-avatar">👨‍🏫</div>
-                <h3>Phạm Đình Thượng</h3>
-                <span class="teacher-subject">Bộ môn Hóa Học</span>
-                <p style="font-size: 14px; color: var(--text-muted);">Chuyên gia lấy gốc cấp tốc, khơi dậy niềm đam mê thực nghiệm môn Hóa.</p>
-            </div>
-            <!-- 4. CÔ LOAN -->
-            <div class="teacher-card">
-                <div class="teacher-avatar">👩‍🏫</div>
-                <h3>Hồ Thị Phương Loan</h3>
-                <span class="teacher-subject">Khoa Học Tự Nhiên</span>
-                <p style="font-size: 14px; color: var(--text-muted);">Đồng hành và xây dựng nền tảng phương pháp tự học vững chắc cho khối THCS.</p>
-            </div>
-            <!-- 5. THẦY THÁI (MỚI THÊM THEO YÊU CẦU - DÙNG ẢNH THAI.JPG) -->
-            <div class="teacher-card">
-                <div class="teacher-avatar">
-                    <img src="thai.jpg" alt="Thầy Thái">
+    <!-- GIỚI THIỆU TRUNG TÂM -->
+    <section id="gioithieu" class="intro">
+        <div class="container">
+            <div class="intro-grid">
+                <div>
+                    <span class="intro-tag">📍 3 CƠ SỞ TẠI XÃ ĐỨC LINH</span>
+                    <h1>Trung Tâm Thành Sơn</h1>
+                    <div class="intro-slogan">Học thật – Hiểu sâu – Tiến bộ mỗi ngày</div>
+                    <p class="intro-text">
+                        Trung Tâm Thành Sơn là nơi học sinh Đức Linh tìm đến để học chắc kiến thức, rèn tư duy và tự tin bước vào mỗi kỳ thi.
+                        Trung tâm do ông <strong>Hồ Quốc Thái</strong> làm chủ và điều hành, cùng đội ngũ thầy cô tận tâm phụ trách môn Toán và Hóa
+                        từ bậc THCS đến THPT, trong đó có thầy <strong>Nguyễn Thành Sơn</strong>, giáo viên Toán với hơn 15 năm đứng lớp.
+                    </p>
+                    <p class="intro-text">
+                        Chúng tôi tin rằng học sinh nào cũng có thể tiến bộ khi được dạy đúng cách. Các em cần <strong>hiểu bản chất</strong> chứ không học thuộc lòng,
+                        cần <strong>luyện tập có định hướng</strong> chứ không làm bài tràn lan, và cần <strong>thầy cô theo sát</strong> chứ không phải tự xoay xở một mình.
+                        Mỗi buổi học ở Thành Sơn là thêm một bước vững chắc trên con đường chinh phục tri thức của các em.
+                    </p>
+                    <div class="intro-btns">
+                        <a href="#thoikhoabieu" class="intro-btn primary">📅 Xem thời khóa biểu</a>
+                        <a href="#hocphi" class="intro-btn ghost">💰 Xem học phí</a>
+                        <a href="tel:0917257775" class="intro-btn ghost">📞 0917 257 775</a>
+                    </div>
                 </div>
-                <h3>Ông Hồ Quốc Thái</h3>
-                <span class="teacher-subject">Cố Vấn Chuyên Môn</span>
-                <p style="font-size: 14px; color: var(--text-muted);">Quản lý học thuật, xây dựng và tối ưu hóa thời khóa biểu khoa học cho trung tâm.</p>
+
+                <div class="intro-values">
+                    <div class="intro-value">
+                        <div class="ic">🎯</div>
+                        <div><h4>Dạy hiểu bản chất</h4><p>Giải thích tận gốc từng khái niệm, giúp học sinh biết vì sao chứ không chỉ biết làm.</p></div>
+                    </div>
+                    <div class="intro-value">
+                        <div class="ic">👀</div>
+                        <div><h4>Theo sát từng học sinh</h4><p>Nắm rõ điểm mạnh, điểm yếu của từng em để kịp thời bổ trợ.</p></div>
+                    </div>
+                    <div class="intro-value">
+                        <div class="ic">🧭</div>
+                        <div><h4>Lộ trình rõ ràng</h4><p>Củng cố nền tảng, nâng cao rồi luyện đề, bám sát chương trình và cấu trúc đề thi mới.</p></div>
+                    </div>
+                    <div class="intro-value">
+                        <div class="ic">🤝</div>
+                        <div><h4>Minh bạch và gần nhà</h4><p>Học phí công khai, 3 cơ sở thuận tiện để phụ huynh đưa đón.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="intro-stats">
+                <div class="intro-stat"><b>3</b><span>Cơ sở học tập</span></div>
+                <div class="intro-stat"><b>4</b><span>Giáo viên tâm huyết</span></div>
+                <div class="intro-stat"><b>15+</b><span>Năm kinh nghiệm đứng lớp</span></div>
+                <div class="intro-stat"><b>6 → 12</b><span>Từ THCS đến THPT</span></div>
             </div>
         </div>
     </section>
 
-    <!-- CÁC LỚP ĐÀO TẠO -->
+    <!-- CHỦ TRUNG TÂM -->
+    <section id="chutrungtam" class="container">
+        <h2 class="section-title">Chủ Trung Tâm</h2>
+        <div class="owner-card">
+            <div class="owner-photo"><img src="thai.jpg" alt="Ông Hồ Quốc Thái" onerror="this.remove()">👨‍💼</div>
+            <div>
+                <span class="owner-role">CHỦ TRUNG TÂM THÀNH SƠN</span>
+                <h3>Ông Hồ Quốc Thái</h3>
+                <p>
+                    Ông Hồ Quốc Thái là chủ và người trực tiếp điều hành Trung Tâm Thành Sơn. Với mong muốn mang đến cho học sinh Đức Linh
+                    một môi trường học tập nghiêm túc, gần nhà và chi phí hợp lý, ông đã quy tụ đội ngũ giáo viên giàu kinh nghiệm,
+                    xây dựng hệ thống 3 cơ sở và duy trì học phí công khai, minh bạch.
+                </p>
+                <p>
+                    Phụ huynh và học sinh có nhu cầu tư vấn, đăng ký lớp hoặc góp ý về chất lượng giảng dạy, vui lòng liên hệ trực tiếp với ông Thái.
+                </p>
+                <div class="owner-contact">
+                    <a href="tel:0917257775" class="owner-btn call">📞 Gọi 0917 257 775</a>
+                    <a href="https://zalo.me/0917257775" target="_blank" rel="noopener" class="owner-btn zalo">💬 Nhắn Zalo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GIÁO VIÊN -->
+    <section id="giaovien" class="container">
+        <h2 class="section-title">Đội Ngũ Giáo Viên Tâm Huyết</h2>
+        <div class="teacher-grid">
+            <div class="teacher-card">
+                <div class="teacher-avatar"><img src="diep.jpg" alt="Cô Hồ Thị Ngọc Diệp" onerror="this.remove()">👩‍🏫</div>
+                <h3>Hồ Thị Ngọc Diệp</h3>
+                <span class="teacher-subject">Bộ môn Hóa Học</span>
+                <p style="font-size: 14px; color: var(--text-muted);">Hơn 10 năm kinh nghiệm luyện thi, giúp học sinh hiểu bản chất Hóa học và bứt phá điểm số.</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-avatar"><img src="son.jpg" alt="Thầy Nguyễn Thành Sơn" onerror="this.remove()">👨‍🏫</div>
+                <h3>Nguyễn Thành Sơn</h3>
+                <span class="teacher-subject">Bộ môn Toán Học</span>
+                <p style="font-size: 14px; color: var(--text-muted);">Phương pháp giảng dạy trực quan, giúp học sinh vận dụng Toán vào các tình huống thực tế.</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-avatar"><img src="thuong.jpg" alt="Thầy Phạm Đình Thượng" onerror="this.remove()">👨‍🏫</div>
+                <h3>Phạm Đình Thượng</h3>
+                <span class="teacher-subject">Bộ môn Hóa Học</span>
+                <p style="font-size: 14px; color: var(--text-muted);">Chuyên gia lấy gốc Hóa học cấp tốc, khơi dậy niềm đam mê thực nghiệm môn Hóa.</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-avatar"><img src="loan.jpg" alt="Cô Hồ Thị Phương Loan" onerror="this.remove()">👩‍🏫</div>
+                <h3>Hồ Thị Phương Loan</h3>
+                <span class="teacher-subject">Bộ môn Toán THCS</span>
+                <p style="font-size: 14px; color: var(--text-muted);">Đồng hành và xây dựng nền tảng phương pháp tự học vững chắc cho khối THCS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KHỐI LỚP HỌC -->
     <section id="lophoc" class="class-section">
+        <div class="container">
+            <h2 class="section-title">Các Lớp Đào Tạo Trọng Tâm</h2>
+            <div class="class-grid">
+                <div class="class-card">
+                    <h3>📘 Toán THCS (Lớp 6 – 8)</h3>
+                    <p>📍 Xây nền tảng số học, đại số và hình học vững chắc; hình thành thói quen tự học, trình bày bài cẩn thận.</p>
+                    <p>🏆 Mục tiêu: Học sinh nắm chắc kiến thức trên lớp, tự tin và yêu thích môn Toán.</p>
+                    <div class="class-meta"><span>Cô Loan</span><span>Cơ sở 3</span></div>
+                </div>
+                <div class="class-card">
+                    <h3>🎯 Toán 9 & Luyện Thi Vào 10</h3>
+                    <p>📍 Hệ thống toàn bộ kiến thức lớp 9, rèn các dạng bài trọng tâm và luyện đề theo cấu trúc thi tuyển sinh.</p>
+                    <p>🏆 Mục tiêu: Đạt điểm cao môn Toán, đỗ nguyện vọng 1 vào các trường THPT công lập.</p>
+                    <div class="class-meta"><span>Cô Loan</span><span>Cơ sở 3</span></div>
+                </div>
+                <div class="class-card">
+                    <h3>📐 Toán THPT (Lớp 10 – 12) & Luyện Thi Tốt Nghiệp</h3>
+                    <p>📍 Học chắc chương trình mới, phát triển tư duy và kỹ năng vận dụng Toán vào tình huống thực tế.</p>
+                    <p>🏆 Mục tiêu: Nắm vững kiến thức từng khối, bứt phá điểm số kỳ thi tốt nghiệp THPT.</p>
+                    <div class="class-meta"><span>Thầy Sơn</span><span>Cơ sở 1</span></div>
+                </div>
+                <div class="class-card">
+                    <h3>⚗️ Hóa Học THPT (Lớp 10 – 12)</h3>
+                    <p>📍 Lấy lại gốc cho học sinh mất căn bản, hiểu bản chất phản ứng, rèn kỹ năng giải bài tập và luyện đề.</p>
+                    <p>🏆 Mục tiêu: Học tốt Hóa trên lớp, đạt điểm cao kỳ thi tốt nghiệp THPT.</p>
+                    <div class="class-meta"><span>Thầy Thượng</span><span>Cô Diệp</span><span>Cơ sở 2</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THỜI KHÓA BIỂU -->
+    <section id="thoikhoabieu" class="container">
+        <h2 class="section-title">Thời Khóa Biểu Các Cơ Sở</h2>
+
+        <div class="campus-tabs" id="campus-tabs"></div>
+        <div id="campus-panels"></div>
+
+        <p class="tkb-note">* Lịch có thể thay đổi theo từng đợt; phụ huynh vui lòng liên hệ trung tâm để được xếp lớp phù hợp.</p>
+    </section>
+
+    <!-- CÔNG KHAI HỌC PHÍ -->
+    <section id="hocphi" class="fee-section">
+        <div class="container">
+            <h2 class="section-title">Công Khai Học Phí</h2>
+            <div class="fee-grid">
+                <div class="fee-card">
+                    <div class="fee-icon">👥</div>
+                    <h3>Lớp kèm</h3>
+                    <p class="fee-size">Sĩ số dưới 10 học sinh</p>
+                    <div class="fee-price deal">Theo thỏa thuận</div>
+                    <p class="fee-desc">Nhóm nhỏ, giáo viên theo sát từng học sinh.</p>
+                </div>
+                <div class="fee-card popular">
+                    <span class="fee-badge">Phổ biến</span>
+                    <div class="fee-icon">🏫</div>
+                    <h3>Lớp tiêu chuẩn</h3>
+                    <p class="fee-size">Sĩ số từ 10 đến dưới 20 học sinh</p>
+                    <div class="fee-price">400.000đ <small>/ tháng</small></div>
+                    <p class="fee-desc">Cân bằng giữa chất lượng kèm cặp và chi phí.</p>
+                </div>
+                <div class="fee-card">
+                    <div class="fee-icon">🎓</div>
+                    <h3>Lớp đông</h3>
+                    <p class="fee-size">Sĩ số từ 20 học sinh trở lên</p>
+                    <div class="fee-price">350.000đ <small>/ tháng</small></div>
+                    <p class="fee-desc">Học phí tiết kiệm, không khí học tập sôi nổi.</p>
+                </div>
+            </div>
+            <div class="fee-note">
+                📌 Học phí được áp dụng chung tại cả 3 cơ sở. Phụ huynh vui lòng liên hệ trung tâm để được tư vấn và xếp lớp phù hợp.
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Trung Tâm Thành Sơn. Đồng hành cùng học sinh trên con đường chinh phục tri thức.</p>
+            <p class="footer-phone">📞 Liên hệ tư vấn – ông Hồ Quốc Thái: <a href="tel:0917257775">0917 257 775</a></p>
+            <div class="campus-address-list" id="footer-addresses"></div>
+        </div>
+    </footer>
+
+    <script>
+    /* =====================================================================
+       DỮ LIỆU THỜI KHÓA BIỂU  —  THẦY CHỈ CẦN SỬA PHẦN NÀY
+       ---------------------------------------------------------------------
+       - Mỗi cơ sở có 5 dòng: ca1 ... ca5 (xem giờ học ở mục CA_HOC bên dưới).
+       - Mỗi dòng có đúng 7 ô, theo thứ tự:
+             Thứ 2, Thứ 3, Thứ 4, Thứ 5, Thứ 6, Thứ 7, Chủ nhật
+       - Mỗi ô ghi dạng:  "Tên lớp - Giáo viên"     ví dụ: "Toán 12 - Thầy Sơn"
+       - Ô trống (không có lớp) thì để:  ""
+       - Một ca có 2 lớp học song song thì ngăn cách bằng dấu  ;
+             ví dụ: "Hóa 10 - Cô Diệp; Hóa 11 - Thầy Thượng"
+       - Nhớ giữ nguyên dấu ngoặc kép " " và dấu phẩy , giữa các ô.
+       ===================================================================== */
+
+    const CA_HOC = {
+        ca1: { ten: "Ca 1", gio: "7:00 – 9:00",   buoi: "BUỔI SÁNG" },
+        ca2: { ten: "Ca 2", gio: "9:00 – 11:00",  buoi: "BUỔI SÁNG" },
+        ca3: { ten: "Ca 3", gio: "14:00 – 16:00", buoi: "BUỔI CHIỀU" },
+        ca4: { ten: "Ca 4", gio: "16:00 – 18:00", buoi: "BUỔI CHIỀU" },
+        ca5: { ten: "Ca 5", gio: "18:00 – 20:00", buoi: "BUỔI CHIỀU" }
+    };
+
+    const CO_SO = [
+        {
+            ten: "Cơ sở 1",
+            diaChi: "286 Hùng Vương, thôn 7, xã Đức Linh",
+            giaoVien: "Thầy Nguyễn Thành Sơn (Toán)",
+            lich: {
+                //     Thứ 2               Thứ 3               Thứ 4               Thứ 5               Thứ 6               Thứ 7               Chủ nhật
+                ca1: [ "",                 "",                 "",                 "",                 "",                 "Toán 12 - Thầy Sơn", "Toán 10 - Thầy Sơn" ],
+                ca2: [ "",                 "",                 "",                 "",                 "",                 "Toán 11 - Thầy Sơn", "Luyện đề THPT - Thầy Sơn" ],
+                ca3: [ "Toán 10 - Thầy Sơn", "",               "Toán 10 - Thầy Sơn", "",               "Toán 11 - Thầy Sơn", "",               "" ],
+                ca4: [ "",                 "Toán 11 - Thầy Sơn", "",               "Toán 12 - Thầy Sơn", "",               "",                 "" ],
+                ca5: [ "Toán 12 - Thầy Sơn", "Luyện đề THPT - Thầy Sơn", "Toán 12 - Thầy Sơn", "Toán 11 - Thầy Sơn", "Luyện đề THPT - Thầy Sơn", "", "" ]
+            }
+        },
+        {
+            ten: "Cơ sở 2",
+            diaChi: "75A Ngô Gia Tự, thôn 9, xã Đức Linh",
+            giaoVien: "Thầy Phạm Đình Thượng (Hóa) · Cô Hồ Thị Ngọc Diệp (Hóa)",
+            lich: {
+                //     Thứ 2                   Thứ 3                   Thứ 4                   Thứ 5                   Thứ 6                   Thứ 7                   Chủ nhật
+                ca1: [ "",                     "",                     "",                     "",                     "",                     "Hóa 12 - Thầy Thượng", "Hóa 10 - Cô Diệp" ],
+                ca2: [ "",                     "",                     "",                     "",                     "",                     "Hóa 11 - Cô Diệp",     "Hóa 11 - Thầy Thượng" ],
+                ca3: [ "Hóa 10 - Thầy Thượng", "Hóa 12 - Cô Diệp",     "",                     "Hóa 11 - Thầy Thượng", "",                     "",                     "" ],
+                ca4: [ "Hóa 11 - Cô Diệp",     "",                     "Hóa 12 - Thầy Thượng", "",                     "Hóa 10 - Cô Diệp",     "",                     "" ],
+                ca5: [ "Hóa 12 - Thầy Thượng", "Luyện đề Hóa - Cô Diệp; Hóa 11 - Thầy Thượng", "Hóa 10 - Cô Diệp", "Hóa 10 - Thầy Thượng", "Luyện đề Hóa - Cô Diệp", "", "" ]
+            }
+        },
+        {
+            ten: "Cơ sở 3",
+            diaChi: "41A Hải Thượng Lãn Ông, thôn 10, xã Đức Linh",
+            giaoVien: "Cô Hồ Thị Phương Loan (Toán THCS)",
+            lich: {
+                ca1: [ "",                 "",                 "",                 "",                 "",                 "Toán 6 - Cô Loan", "Toán 8 - Cô Loan" ],
+                ca2: [ "",                 "",                 "",                 "",                 "",                 "Toán 7 - Cô Loan", "Toán 9 - Cô Loan" ],
+                ca3: [ "Toán 6 - Cô Loan", "",                 "Toán 7 - Cô Loan", "",                 "Toán 8 - Cô Loan", "",               "" ],
+                ca4: [ "",                 "Toán 8 - Cô Loan", "",                 "Toán 6 - Cô Loan", "",                 "",               "" ],
+                ca5: [ "Toán 9 - Cô Loan", "Toán 7 - Cô Loan", "Toán 9 - Cô Loan", "",                 "Toán 9 - Cô Loan", "",               "" ]
+            }
+        }
+    ];
+
+    /* ===================== PHẦN HIỂN THỊ (không cần sửa) ===================== */
+    (function () {
+        const THU = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"];
+        const homNay = (new Date().getDay() + 6) % 7; // 0 = Thứ 2 ... 6 = Chủ nhật
+        const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+        function veO(noiDung, i) {
+            const cls = i === homNay ? " today" : "";
+            const lop = String(noiDung || "").split(";").map(x => x.trim()).filter(Boolean);
+            if (!lop.length) return '<td class="tkb-empty' + cls + '">—</td>';
+            const html = lop.map(x => {
+                const k = x.indexOf(" - ");
+                const ten = k >= 0 ? x.slice(0, k) : x;
+                const gv = k >= 0 ? x.slice(k + 3) : "";
+                return '<span class="class-code">' + esc(ten) + '</span>' +
+                       (gv ? '<span class="tkb-teacher">' + esc(gv) + '</span>' : '');
+            }).join("");
+            return '<td class="tkb-cell' + cls + '">' + html + '</td>';
+        }
+
+        function veBang(cs) {
+            let h = '<div class="table-wrapper"><table><thead><tr>' +
+                '<th class="diagonal-split"><span class="top-right">Thứ</span><span class="bottom-left">Ca học</span></th>' +
+                THU.map((t, i) => '<th' + (i === homNay ? ' class="today" title="Hôm nay"' : '') + '>' + t + '</th>').join("") +
+                '</tr></thead><tbody>';
+            let buoiTruoc = "";
+            Object.keys(CA_HOC).forEach(key => {
+                const ca = CA_HOC[key];
+                if (ca.buoi !== buoiTruoc) {
+                    h += '<tr class="buoi-row"><td colspan="8">' + ca.buoi + '</td></tr>';
+                    buoiTruoc = ca.buoi;
+                }
+                const hang = (cs.lich && cs.lich[key]) || [];
+                h += '<tr><td class="time-col">' + ca.ten + '<small>' + ca.gio + '</small></td>';
+                for (let i = 0; i < 7; i++) h += veO(hang[i], i);
+                h += '</tr>';
+            });
+            return h + '</tbody></table></div>';
+        }
+
+        const tabs = document.getElementById("campus-tabs");
+        const panels = document.getElementById("campus-panels");
+        CO_SO.forEach((cs, idx) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "campus-tab" + (idx === 0 ? " active" : "");
+            btn.textContent = "📍 " + cs.ten;
+            btn.addEventListener("click", () => {
+                tabs.querySelectorAll(".campus-tab").forEach(b => b.classList.toggle("active", b === btn));
+                panels.querySelectorAll(".campus-panel").forEach((p, j) => p.classList.toggle("active", j === idx));
+            });
+            tabs.appendChild(btn);
+
+            const panel = document.createElement("div");
+            panel.className = "campus-panel" + (idx === 0 ? " active" : "");
+            panel.innerHTML =
+                '<div class="campus-info"><div><h3>' + esc(cs.ten) + '</h3><p>🏠 ' + esc(cs.diaChi) + '</p></div>' +
+                '<div class="campus-teachers">👨‍🏫 ' + esc(cs.giaoVien) + '</div></div>' + veBang(cs);
+            panels.appendChild(panel);
+        });
+
+        document.getElementById("footer-addresses").innerHTML =
+            CO_SO.map(cs => '📍 <strong>' + esc(cs.ten) + ':</strong> ' + esc(cs.diaChi)).join("<br>");
+    })();
+    </script>
+
+</body>
+</html>
