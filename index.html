@@ -184,7 +184,7 @@
             margin-bottom: 8px;
         }
 
-        /* --- 3. THỜI KHÓA BIỂU (ĐÃ SỬA LỖI HIỂN THỊ CHUẨN 100%) --- */
+        /* --- 3. THỜI KHÓA BIỂU --- */
         .table-wrapper {
             background-color: var(--white);
             padding: 20px;
@@ -213,7 +213,6 @@
             font-weight: 600;
         }
 
-        /* ✅ ĐÃ ĐƯỢC CHỈNH SỬA LẠI CÚ PHÁP ĐƯỜNG KẺ CHÉO CSS CHUẨN XÁC */
         .diagonal-split {
             position: relative;
             background: linear-gradient(to top right, #f1f5f9 49%, var(--border-color) 49%, var(--border-color) 51%, #f1f5f9 51%) !important;
@@ -253,7 +252,6 @@
             border: 1px solid #e0f2fe;
         }
 
-
         .tkb-cell .class-code { font-size: 14px; }
         .tkb-teacher {
             display: block;
@@ -268,7 +266,6 @@
             color: var(--text-muted);
             text-align: center;
         }
-
 
         /* --- TAB CƠ SỞ --- */
         .campus-tabs {
@@ -327,6 +324,22 @@
         td.today { background: #f0f9ff; }
         .campus-address-list { margin-top: 10px; line-height: 1.9; }
 
+        /* --- CÔNG KHAI HỌC PHÍ --- */
+        .fee-section { background-color: var(--white); }
+        .fee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        .fee-card { background: var(--bg-light); border: 1px solid #e2e8f0; border-radius: 14px; padding: 30px 24px; text-align: center; position: relative; transition: transform 0.3s, border-color 0.3s; }
+        .fee-card:hover { transform: translateY(-5px); border-color: var(--primary-blue); }
+        .fee-card.popular { border: 2px solid var(--primary-blue); background: #f0f9ff; }
+        .fee-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--primary-blue); color: var(--white); font-size: 12px; font-weight: 700; padding: 3px 14px; border-radius: 999px; white-space: nowrap; }
+        .fee-icon { font-size: 36px; margin-bottom: 8px; }
+        .fee-card h3 { font-size: 19px; color: var(--dark-blue); margin-bottom: 4px; }
+        .fee-size { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+        .fee-price { font-size: 32px; font-weight: 800; color: var(--primary-blue); line-height: 1.2; }
+        .fee-price small { font-size: 15px; font-weight: 600; color: var(--text-muted); }
+        .fee-price.deal { font-size: 26px; }
+        .fee-desc { margin-top: 14px; font-size: 14px; color: var(--text-muted); }
+        .fee-note { margin-top: 30px; background: #f0f9ff; border-left: 5px solid var(--primary-blue); border-radius: 8px; padding: 14px 20px; font-size: 14px; color: var(--text-dark); }
+
         /* --- FOOTER --- */
         footer {
             background-color: var(--dark-blue);
@@ -338,7 +351,7 @@
 
         @media (max-width: 768px) {
             nav { flex-direction: column; gap: 15px; }
-            .nav-links { gap: 15px; }
+            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
@@ -353,6 +366,7 @@
                     <li><a href="#giaovien">Giáo Viên</a></li>
                     <li><a href="#lophoc">Lớp Học</a></li>
                     <li><a href="#thoikhoabieu">Thời Khóa Biểu</a></li>
+                    <li><a href="#hocphi">Học Phí</a></li>
                 </ul>
             </nav>
         </div>
@@ -404,7 +418,6 @@
                     <p>📍 Xây dựng kiến thức nền tảng vững chắc theo chương trình đổi mới giáo dục.</p>
                     <p>🏆 Giúp học sinh làm quen tư duy phân tích dữ liệu môn Toán, Lý, Hóa.</p>
                 </div>
-
             </div>
         </div>
     </section>
@@ -417,6 +430,40 @@
         <div id="campus-panels"></div>
 
         <p class="tkb-note">* Lịch có thể thay đổi theo từng đợt; phụ huynh vui lòng liên hệ trung tâm để được xếp lớp phù hợp.</p>
+    </section>
+
+    <!-- CÔNG KHAI HỌC PHÍ -->
+    <section id="hocphi" class="fee-section">
+        <div class="container">
+            <h2 class="section-title">Công Khai Học Phí</h2>
+            <div class="fee-grid">
+                <div class="fee-card">
+                    <div class="fee-icon">👥</div>
+                    <h3>Lớp kèm</h3>
+                    <p class="fee-size">Sĩ số dưới 10 học sinh</p>
+                    <div class="fee-price deal">Theo thỏa thuận</div>
+                    <p class="fee-desc">Nhóm nhỏ, giáo viên theo sát từng học sinh.</p>
+                </div>
+                <div class="fee-card popular">
+                    <span class="fee-badge">Phổ biến</span>
+                    <div class="fee-icon">🏫</div>
+                    <h3>Lớp tiêu chuẩn</h3>
+                    <p class="fee-size">Sĩ số từ 10 đến dưới 20 học sinh</p>
+                    <div class="fee-price">400.000đ <small>/ tháng</small></div>
+                    <p class="fee-desc">Cân bằng giữa chất lượng kèm cặp và chi phí.</p>
+                </div>
+                <div class="fee-card">
+                    <div class="fee-icon">🎓</div>
+                    <h3>Lớp đông</h3>
+                    <p class="fee-size">Sĩ số từ 20 học sinh trở lên</p>
+                    <div class="fee-price">350.000đ <small>/ tháng</small></div>
+                    <p class="fee-desc">Học phí tiết kiệm, không khí học tập sôi nổi.</p>
+                </div>
+            </div>
+            <div class="fee-note">
+                📌 Học phí được áp dụng chung tại cả 3 cơ sở. Phụ huynh vui lòng liên hệ trung tâm để được tư vấn và xếp lớp phù hợp.
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
