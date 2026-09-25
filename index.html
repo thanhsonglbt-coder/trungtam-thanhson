@@ -198,6 +198,7 @@
             border-collapse: collapse;
             min-width: 800px;
             text-align: center;
+            table-layout: fixed;
         }
 
         th, td {
@@ -252,6 +253,80 @@
             border: 1px solid #e0f2fe;
         }
 
+
+        .tkb-cell .class-code { font-size: 14px; }
+        .tkb-teacher {
+            display: block;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .tkb-empty { color: #cbd5e1; }
+        .tkb-note {
+            margin-top: 14px;
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+
+        /* --- TAB CƠ SỞ --- */
+        .campus-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .campus-tab {
+            border: 2px solid var(--border-color);
+            background: var(--white);
+            color: var(--text-dark);
+            border-radius: 999px;
+            padding: 10px 22px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .campus-tab:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+        .campus-tab.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: var(--white);
+        }
+        .campus-panel { display: none; }
+        .campus-panel.active { display: block; }
+        .campus-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px 30px;
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+        }
+        .campus-info h3 { color: var(--dark-blue); font-size: 19px; }
+        .campus-info p { font-size: 15px; color: var(--text-dark); }
+        .campus-teachers { font-size: 15px; color: var(--dark-blue); font-weight: 600; align-self: center; }
+        .buoi-row td {
+            background: var(--dark-blue);
+            color: var(--white);
+            font-weight: 700;
+            text-align: left;
+            padding: 8px 14px;
+            letter-spacing: 0.5px;
+            font-size: 14px;
+        }
+        .time-col small { display: block; font-weight: 500; color: var(--text-muted); }
+        .tkb-cell .class-code + .tkb-teacher + .class-code { margin-top: 8px; }
+        th.today { background: var(--primary-blue); color: var(--white); }
+        td.today { background: #f0f9ff; }
+        .campus-address-list { margin-top: 10px; line-height: 1.9; }
+
         /* --- FOOTER --- */
         footer {
             background-color: var(--dark-blue);
@@ -296,8 +371,8 @@
             <div class="teacher-card">
                 <div class="teacher-avatar">👨‍🏫</div>
                 <h3>Nguyễn Thành Sơn</h3>
-                <span class="teacher-subject">Bộ môn Vật Lý</span>
-                <p style="font-size: 14px; color: var(--text-muted);">Phương pháp giảng dạy trực quan, giúp học sinh liên hệ hiện tượng thực tế hiệu quả.</p>
+                <span class="teacher-subject">Bộ môn Toán Học</span>
+                <p style="font-size: 14px; color: var(--text-muted);">Phương pháp giảng dạy trực quan, giúp học sinh vận dụng Toán vào các tình huống thực tế.</p>
             </div>
             <div class="teacher-card">
                 <div class="teacher-avatar">👨‍🏫</div>
@@ -329,3 +404,156 @@
                     <p>📍 Xây dựng kiến thức nền tảng vững chắc theo chương trình đổi mới giáo dục.</p>
                     <p>🏆 Giúp học sinh làm quen tư duy phân tích dữ liệu môn Toán, Lý, Hóa.</p>
                 </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- THỜI KHÓA BIỂU -->
+    <section id="thoikhoabieu" class="container">
+        <h2 class="section-title">Thời Khóa Biểu Các Cơ Sở</h2>
+
+        <div class="campus-tabs" id="campus-tabs"></div>
+        <div id="campus-panels"></div>
+
+        <p class="tkb-note">* Lịch có thể thay đổi theo từng đợt; phụ huynh vui lòng liên hệ trung tâm để được xếp lớp phù hợp.</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Trung Tâm Giáo Dục. Đồng hành cùng học sinh trên con đường chinh phục tri thức.</p>
+            <div class="campus-address-list" id="footer-addresses"></div>
+        </div>
+    </footer>
+
+    <script>
+    /* =====================================================================
+       DỮ LIỆU THỜI KHÓA BIỂU  —  THẦY CHỈ CẦN SỬA PHẦN NÀY
+       ---------------------------------------------------------------------
+       - Mỗi cơ sở có 5 dòng: ca1 ... ca5 (xem giờ học ở mục CA_HOC bên dưới).
+       - Mỗi dòng có đúng 7 ô, theo thứ tự:
+             Thứ 2, Thứ 3, Thứ 4, Thứ 5, Thứ 6, Thứ 7, Chủ nhật
+       - Mỗi ô ghi dạng:  "Tên lớp - Giáo viên"     ví dụ: "Toán 12 - Thầy Sơn"
+       - Ô trống (không có lớp) thì để:  ""
+       - Một ca có 2 lớp học song song thì ngăn cách bằng dấu  ;
+             ví dụ: "Toán 9 - Cô Diệp; Hóa 11 - Thầy Thượng"
+       - Nhớ giữ nguyên dấu ngoặc kép " " và dấu phẩy , giữa các ô.
+       ===================================================================== */
+
+    const CA_HOC = {
+        ca1: { ten: "Ca 1", gio: "7:00 – 9:00",   buoi: "BUỔI SÁNG" },
+        ca2: { ten: "Ca 2", gio: "9:00 – 11:00",  buoi: "BUỔI SÁNG" },
+        ca3: { ten: "Ca 3", gio: "14:00 – 16:00", buoi: "BUỔI CHIỀU" },
+        ca4: { ten: "Ca 4", gio: "16:00 – 18:00", buoi: "BUỔI CHIỀU" },
+        ca5: { ten: "Ca 5", gio: "18:00 – 20:00", buoi: "BUỔI CHIỀU" }
+    };
+
+    const CO_SO = [
+        {
+            ten: "Cơ sở 1",
+            diaChi: "286 Hùng Vương, thôn 7, xã Đức Linh",
+            giaoVien: "Thầy Nguyễn Thành Sơn (Toán)",
+            lich: {
+                //     Thứ 2               Thứ 3               Thứ 4               Thứ 5               Thứ 6               Thứ 7               Chủ nhật
+                ca1: [ "",                 "",                 "",                 "",                 "",                 "Toán 12 - Thầy Sơn", "Toán 10 - Thầy Sơn" ],
+                ca2: [ "",                 "",                 "",                 "",                 "",                 "Toán 11 - Thầy Sơn", "Luyện đề THPT - Thầy Sơn" ],
+                ca3: [ "Toán 10 - Thầy Sơn", "",               "Toán 10 - Thầy Sơn", "",               "Toán 11 - Thầy Sơn", "",               "" ],
+                ca4: [ "",                 "Toán 11 - Thầy Sơn", "",               "Toán 12 - Thầy Sơn", "",               "",                 "" ],
+                ca5: [ "Toán 12 - Thầy Sơn", "Luyện đề THPT - Thầy Sơn", "Toán 12 - Thầy Sơn", "Toán 11 - Thầy Sơn", "Luyện đề THPT - Thầy Sơn", "", "" ]
+            }
+        },
+        {
+            ten: "Cơ sở 2",
+            diaChi: "75A Ngô Gia Tự, thôn 9, xã Đức Linh",
+            giaoVien: "Thầy Phạm Đình Thượng (Hóa) · Cô Hồ Thị Ngọc Diệp (Toán)",
+            lich: {
+                ca1: [ "",                 "",                 "",                 "",                 "",                 "Hóa 12 - Thầy Thượng", "Toán 9 - Cô Diệp" ],
+                ca2: [ "",                 "",                 "",                 "",                 "",                 "Luyện thi vào 10 - Cô Diệp", "Hóa 11 - Thầy Thượng" ],
+                ca3: [ "Hóa 10 - Thầy Thượng", "Toán 9 - Cô Diệp", "",             "Hóa 11 - Thầy Thượng", "",           "",                 "" ],
+                ca4: [ "Toán 9 - Cô Diệp", "",                 "Hóa 12 - Thầy Thượng", "",             "Toán 9 - Cô Diệp", "",               "" ],
+                ca5: [ "Hóa 12 - Thầy Thượng", "Luyện thi vào 10 - Cô Diệp; Hóa 11 - Thầy Thượng", "Luyện thi vào 10 - Cô Diệp", "Hóa 10 - Thầy Thượng", "Luyện thi vào 10 - Cô Diệp", "", "" ]
+            }
+        },
+        {
+            ten: "Cơ sở 3",
+            diaChi: "41A Hải Thượng Lãn Ông, thôn 7, xã Đức Linh",
+            giaoVien: "Cô Hồ Thị Phương Loan (Toán THCS)",
+            lich: {
+                ca1: [ "",                 "",                 "",                 "",                 "",                 "Toán 6 - Cô Loan", "Toán 8 - Cô Loan" ],
+                ca2: [ "",                 "",                 "",                 "",                 "",                 "Toán 7 - Cô Loan", "Toán 9 - Cô Loan" ],
+                ca3: [ "Toán 6 - Cô Loan", "",                 "Toán 7 - Cô Loan", "",                 "Toán 8 - Cô Loan", "",               "" ],
+                ca4: [ "",                 "Toán 8 - Cô Loan", "",                 "Toán 6 - Cô Loan", "",                 "",               "" ],
+                ca5: [ "Toán 9 - Cô Loan", "Toán 7 - Cô Loan", "Toán 9 - Cô Loan", "",                 "Toán 9 - Cô Loan", "",               "" ]
+            }
+        }
+    ];
+
+    /* ===================== PHẦN HIỂN THỊ (không cần sửa) ===================== */
+    (function () {
+        const THU = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"];
+        const homNay = (new Date().getDay() + 6) % 7; // 0 = Thứ 2 ... 6 = Chủ nhật
+        const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+        function veO(noiDung, i) {
+            const cls = i === homNay ? " today" : "";
+            const lop = String(noiDung || "").split(";").map(x => x.trim()).filter(Boolean);
+            if (!lop.length) return '<td class="tkb-empty' + cls + '">—</td>';
+            const html = lop.map(x => {
+                const k = x.indexOf(" - ");
+                const ten = k >= 0 ? x.slice(0, k) : x;
+                const gv = k >= 0 ? x.slice(k + 3) : "";
+                return '<span class="class-code">' + esc(ten) + '</span>' +
+                       (gv ? '<span class="tkb-teacher">' + esc(gv) + '</span>' : '');
+            }).join("");
+            return '<td class="tkb-cell' + cls + '">' + html + '</td>';
+        }
+
+        function veBang(cs) {
+            let h = '<div class="table-wrapper"><table><thead><tr>' +
+                '<th class="diagonal-split"><span class="top-right">Thứ</span><span class="bottom-left">Ca học</span></th>' +
+                THU.map((t, i) => '<th' + (i === homNay ? ' class="today" title="Hôm nay"' : '') + '>' + t + '</th>').join("") +
+                '</tr></thead><tbody>';
+            let buoiTruoc = "";
+            Object.keys(CA_HOC).forEach(key => {
+                const ca = CA_HOC[key];
+                if (ca.buoi !== buoiTruoc) {
+                    h += '<tr class="buoi-row"><td colspan="8">' + ca.buoi + '</td></tr>';
+                    buoiTruoc = ca.buoi;
+                }
+                const hang = (cs.lich && cs.lich[key]) || [];
+                h += '<tr><td class="time-col">' + ca.ten + '<small>' + ca.gio + '</small></td>';
+                for (let i = 0; i < 7; i++) h += veO(hang[i], i);
+                h += '</tr>';
+            });
+            return h + '</tbody></table></div>';
+        }
+
+        const tabs = document.getElementById("campus-tabs");
+        const panels = document.getElementById("campus-panels");
+        CO_SO.forEach((cs, idx) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "campus-tab" + (idx === 0 ? " active" : "");
+            btn.textContent = "📍 " + cs.ten;
+            btn.addEventListener("click", () => {
+                tabs.querySelectorAll(".campus-tab").forEach(b => b.classList.toggle("active", b === btn));
+                panels.querySelectorAll(".campus-panel").forEach((p, j) => p.classList.toggle("active", j === idx));
+            });
+            tabs.appendChild(btn);
+
+            const panel = document.createElement("div");
+            panel.className = "campus-panel" + (idx === 0 ? " active" : "");
+            panel.innerHTML =
+                '<div class="campus-info"><div><h3>' + esc(cs.ten) + '</h3><p>🏠 ' + esc(cs.diaChi) + '</p></div>' +
+                '<div class="campus-teachers">👨‍🏫 ' + esc(cs.giaoVien) + '</div></div>' + veBang(cs);
+            panels.appendChild(panel);
+        });
+
+        document.getElementById("footer-addresses").innerHTML =
+            CO_SO.map(cs => '📍 <strong>' + esc(cs.ten) + ':</strong> ' + esc(cs.diaChi)).join("<br>");
+    })();
+    </script>
+
+</body>
+</html>
