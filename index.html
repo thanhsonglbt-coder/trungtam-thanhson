@@ -184,19 +184,19 @@
             margin-bottom: 8px;
         }
 
-        /* --- 3. THỜI KHÓA BIỂU (CHUẨN 100% THEO ẢNH) --- */
+        /* --- 3. THỜI KHÓA BIỂU (ĐÃ SỬA LỖI HIỂN THỊ CHUẨN 100%) --- */
         .table-wrapper {
             background-color: var(--white);
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            overflow-x: auto; /* Hỗ trợ kéo ngang mượt mà trên điện thoại */
+            overflow-x: auto;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 800px; /* Đảm bảo bảng không bị méo chữ khi thu nhỏ screen */
+            min-width: 800px;
             text-align: center;
         }
 
@@ -212,45 +212,44 @@
             font-weight: 600;
         }
 
-        /* Ô đặc biệt chứa đường gạch chéo phân tách Khung giờ / Thứ */
+        /* ✅ ĐÃ ĐƯỢC CHỈNH SỬA LẠI CÚ PHÁP ĐƯỜNG KẺ CHÉO CSS CHUẨN XÁC */
         .diagonal-split {
             position: relative;
-            background: linear-gradient(to top right, #f1f5f9 49.5%, var(--border-color) 49.5%, var(--border-color) 50.5%, #f1f5f9 50.5%);
+            background: linear-gradient(to top right, #f1f5f9 49%, var(--border-color) 49%, var(--border-color) 51%, #f1f5f9 51%) !important;
             padding: 0;
-            height: 60px;
+            height: 65px;
             min-width: 140px;
         }
 
         .diagonal-split .top-right {
             position: absolute;
-            top: 5px;
+            top: 8px;
             right: 15px;
             font-weight: 600;
         }
 
         .diagonal-split .bottom-left {
             position: absolute;
-            bottom: 5px;
+            bottom: 8px;
             left: 15px;
             font-weight: 600;
         }
 
-        /* Cấu hình cột thời gian bên trái */
         .time-col {
             background-color: #f8fafc;
             font-weight: 600;
             color: var(--dark-blue);
-            width: 130px;
+            width: 140px;
         }
 
-        /* Định dạng hiển thị mã lớp trong bảng */
         .class-code {
             font-weight: 700;
             color: var(--primary-blue);
             background-color: #f0f9ff;
-            padding: 4px 8px;
+            padding: 6px 12px;
             border-radius: 4px;
             display: inline-block;
+            border: 1px solid #e0f2fe;
         }
 
         /* --- FOOTER --- */
@@ -270,7 +269,7 @@
 </head>
 <body>
 
-    <!-- THANH MENU ĐIỀU HƯỚNG -->
+    <!-- NAV BAR -->
     <header>
         <div class="container">
             <nav>
@@ -284,20 +283,20 @@
         </div>
     </header>
 
-    <!-- 1. KHỐI GIỚI THIỆU GIÁO VIÊN -->
+    <!-- GIÁO VIÊN -->
     <section id="giaovien" class="container">
         <h2 class="section-title">Đội Ngũ Giáo Viên Tâm Huyết</h2>
         <div class="teacher-grid">
             <div class="teacher-card">
                 <div class="teacher-avatar">👩‍🏫</div>
                 <h3>Hồ Thị Ngọc Diệp</h3>
-                <span class="teacher-subject">Bộ môn Hóa học</span>
+                <span class="teacher-subject">Bộ môn Toán Học</span>
                 <p style="font-size: 14px; color: var(--text-muted);">Hơn 10 năm kinh nghiệm luyện thi trường chuyên, bứt phá tư duy logic.</p>
             </div>
             <div class="teacher-card">
                 <div class="teacher-avatar">👨‍🏫</div>
                 <h3>Nguyễn Thành Sơn</h3>
-                <span class="teacher-subject">Bộ môn Toán học</span>
+                <span class="teacher-subject">Bộ môn Vật Lý</span>
                 <p style="font-size: 14px; color: var(--text-muted);">Phương pháp giảng dạy trực quan, giúp học sinh liên hệ hiện tượng thực tế hiệu quả.</p>
             </div>
             <div class="teacher-card">
@@ -309,13 +308,13 @@
             <div class="teacher-card">
                 <div class="teacher-avatar">👩‍🏫</div>
                 <h3>Hồ Thị Phương Loan</h3>
-                <span class="teacher-subject">Khoa Học Tự Nhiên</span>
+                <span class="teacher-subject">Giáo viên tận tâm môn Toán THCS</span>
                 <p style="font-size: 14px; color: var(--text-muted);">Đồng hành và xây dựng nền tảng phương pháp tự học vững chắc cho khối THCS.</p>
             </div>
         </div>
     </section>
 
-    <!-- 2. KHỐI DANH SÁCH LỚP HỌC -->
+    <!-- KHỐI LỚP HỌC -->
     <section id="lophoc" class="class-section">
         <div class="container">
             <h2 class="section-title">Các Lớp Đào Tạo Trọng Tâm</h2>
@@ -327,3 +326,6 @@
                 </div>
                 <div class="class-card">
                     <h3>Khối Lớp 10 & 11 (Căn Bản - Nâng Cao)</h3>
+                    <p>📍 Xây dựng kiến thức nền tảng vững chắc theo chương trình đổi mới giáo dục.</p>
+                    <p>🏆 Giúp học sinh làm quen tư duy phân tích dữ liệu môn Toán, Lý, Hóa.</p>
+                </div>
