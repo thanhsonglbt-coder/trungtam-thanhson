@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trung Tâm Giáo Dục - Thời Khóa Biểu & Lớp Học</title>
+    <title>Trung Tâm Thành Sơn - Học thật, Hiểu sâu</title>
     <style>
         :root {
             --primary-blue: #0284c7; 
@@ -103,6 +103,28 @@
             border-radius: 2px;
         }
 
+        /* --- 0. GIỚI THIỆU TRUNG TÂM --- */
+        .intro { background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%); color: #fff; padding: 70px 0 60px; }
+        .intro-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
+        .intro-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 4px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 14px; }
+        .intro h1 { font-size: 40px; line-height: 1.2; margin-bottom: 10px; }
+        .intro-slogan { font-size: 20px; font-weight: 600; color: #bae6fd; margin-bottom: 20px; }
+        .intro p.intro-text { font-size: 16px; color: #e0f2fe; margin-bottom: 14px; }
+        .intro-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+        .intro-btn { text-decoration: none; font-weight: 700; padding: 12px 24px; border-radius: 999px; font-size: 15px; transition: transform 0.2s; }
+        .intro-btn:hover { transform: translateY(-2px); }
+        .intro-btn.primary { background: #fff; color: #0c4a6e; }
+        .intro-btn.ghost { border: 2px solid #fff; color: #fff; }
+        .intro-values { display: grid; gap: 14px; }
+        .intro-value { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start; }
+        .intro-value .ic { font-size: 26px; line-height: 1; }
+        .intro-value h4 { font-size: 16px; margin-bottom: 2px; }
+        .intro-value p { font-size: 14px; color: #e0f2fe; }
+        .intro-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 45px; text-align: center; }
+        .intro-stat { background: rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 10px; }
+        .intro-stat b { display: block; font-size: 30px; color: #fff; }
+        .intro-stat span { font-size: 14px; color: #bae6fd; }
+
         /* --- 1. ĐỘI NGŨ GIÁO VIÊN --- */
         .teacher-grid {
             display: grid;
@@ -126,8 +148,10 @@
         }
 
         .teacher-avatar {
-            width: 80px;
-            height: 80px;
+            position: relative;
+            overflow: hidden;
+            width: 110px;
+            height: 110px;
             background-color: #f0f9ff;
             border: 2px solid var(--primary-blue);
             border-radius: 50%;
@@ -135,7 +159,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 35px;
+            font-size: 45px;
+        }
+
+        .teacher-avatar img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
         }
 
         .teacher-card h3 {
@@ -161,7 +194,7 @@
 
         .class-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
         }
 
@@ -173,7 +206,7 @@
         }
 
         .class-card h3 {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 10px;
             color: var(--dark-blue);
         }
@@ -182,6 +215,22 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 8px;
+        }
+
+        .class-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .class-meta span {
+            background: #e0f2fe;
+            color: var(--dark-blue);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: 999px;
         }
 
         /* --- 3. THỜI KHÓA BIỂU --- */
@@ -349,6 +398,12 @@
             font-size: 14px;
         }
 
+        @media (max-width: 860px) {
+            .intro-grid { grid-template-columns: 1fr; }
+            .intro h1 { font-size: 30px; }
+            .intro-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 768px) {
             nav { flex-direction: column; gap: 15px; }
             .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
@@ -361,8 +416,9 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">🏫 TRUNG TÂM GIÁO DỤC</a>
+                <a href="#" class="logo">🏫 TRUNG TÂM THÀNH SƠN</a>
                 <ul class="nav-links">
+                    <li><a href="#gioithieu">Giới Thiệu</a></li>
                     <li><a href="#giaovien">Giáo Viên</a></li>
                     <li><a href="#lophoc">Lớp Học</a></li>
                     <li><a href="#thoikhoabieu">Thời Khóa Biểu</a></li>
@@ -372,32 +428,85 @@
         </div>
     </header>
 
+    <!-- GIỚI THIỆU TRUNG TÂM -->
+    <section id="gioithieu" class="intro">
+        <div class="container">
+            <div class="intro-grid">
+                <div>
+                    <span class="intro-tag">📍 3 CƠ SỞ TẠI XÃ ĐỨC LINH</span>
+                    <h1>Trung Tâm Thành Sơn</h1>
+                    <div class="intro-slogan">Học thật – Hiểu sâu – Tiến bộ mỗi ngày</div>
+                    <p class="intro-text">
+                        Trung Tâm Thành Sơn là nơi học sinh Đức Linh tìm đến để học chắc kiến thức, rèn tư duy và tự tin bước vào mỗi kỳ thi.
+                        Trung tâm do thầy <strong>Nguyễn Thành Sơn</strong>, giáo viên Toán với hơn 15 năm đứng lớp, sáng lập.
+                        Cùng đồng hành là đội ngũ thầy cô tận tâm, phụ trách môn Toán và Hóa từ bậc THCS đến THPT.
+                    </p>
+                    <p class="intro-text">
+                        Chúng tôi tin rằng học sinh nào cũng có thể tiến bộ khi được dạy đúng cách. Các em cần <strong>hiểu bản chất</strong> chứ không học thuộc lòng,
+                        cần <strong>luyện tập có định hướng</strong> chứ không làm bài tràn lan, và cần <strong>thầy cô theo sát</strong> chứ không phải tự xoay xở một mình.
+                        Mỗi buổi học ở Thành Sơn là thêm một bước vững chắc trên con đường chinh phục tri thức của các em.
+                    </p>
+                    <div class="intro-btns">
+                        <a href="#thoikhoabieu" class="intro-btn primary">📅 Xem thời khóa biểu</a>
+                        <a href="#hocphi" class="intro-btn ghost">💰 Xem học phí</a>
+                    </div>
+                </div>
+
+                <div class="intro-values">
+                    <div class="intro-value">
+                        <div class="ic">🎯</div>
+                        <div><h4>Dạy hiểu bản chất</h4><p>Giải thích tận gốc từng khái niệm, giúp học sinh biết vì sao chứ không chỉ biết làm.</p></div>
+                    </div>
+                    <div class="intro-value">
+                        <div class="ic">👀</div>
+                        <div><h4>Theo sát từng học sinh</h4><p>Nắm rõ điểm mạnh, điểm yếu của từng em để kịp thời bổ trợ.</p></div>
+                    </div>
+                    <div class="intro-value">
+                        <div class="ic">🧭</div>
+                        <div><h4>Lộ trình rõ ràng</h4><p>Củng cố nền tảng, nâng cao rồi luyện đề, bám sát chương trình và cấu trúc đề thi mới.</p></div>
+                    </div>
+                    <div class="intro-value">
+                        <div class="ic">🤝</div>
+                        <div><h4>Minh bạch và gần nhà</h4><p>Học phí công khai, 3 cơ sở thuận tiện để phụ huynh đưa đón.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="intro-stats">
+                <div class="intro-stat"><b>3</b><span>Cơ sở học tập</span></div>
+                <div class="intro-stat"><b>4</b><span>Giáo viên tâm huyết</span></div>
+                <div class="intro-stat"><b>15+</b><span>Năm kinh nghiệm đứng lớp</span></div>
+                <div class="intro-stat"><b>6 → 12</b><span>Từ THCS đến THPT</span></div>
+            </div>
+        </div>
+    </section>
+
     <!-- GIÁO VIÊN -->
     <section id="giaovien" class="container">
         <h2 class="section-title">Đội Ngũ Giáo Viên Tâm Huyết</h2>
         <div class="teacher-grid">
             <div class="teacher-card">
-                <div class="teacher-avatar">👩‍🏫</div>
+                <div class="teacher-avatar"><img src="diep.jpg" alt="Cô Hồ Thị Ngọc Diệp" onerror="this.remove()">👩‍🏫</div>
                 <h3>Hồ Thị Ngọc Diệp</h3>
-                <span class="teacher-subject">Bộ môn Toán Học</span>
-                <p style="font-size: 14px; color: var(--text-muted);">Hơn 10 năm kinh nghiệm luyện thi trường chuyên, bứt phá tư duy logic.</p>
+                <span class="teacher-subject">Bộ môn Hóa Học</span>
+                <p style="font-size: 14px; color: var(--text-muted);">Hơn 10 năm kinh nghiệm luyện thi, giúp học sinh hiểu bản chất Hóa học và bứt phá điểm số.</p>
             </div>
             <div class="teacher-card">
-                <div class="teacher-avatar">👨‍🏫</div>
+                <div class="teacher-avatar"><img src="son.jpg" alt="Thầy Nguyễn Thành Sơn" onerror="this.remove()">👨‍🏫</div>
                 <h3>Nguyễn Thành Sơn</h3>
                 <span class="teacher-subject">Bộ môn Toán Học</span>
                 <p style="font-size: 14px; color: var(--text-muted);">Phương pháp giảng dạy trực quan, giúp học sinh vận dụng Toán vào các tình huống thực tế.</p>
             </div>
             <div class="teacher-card">
-                <div class="teacher-avatar">👨‍🏫</div>
+                <div class="teacher-avatar"><img src="thuong.jpg" alt="Thầy Phạm Đình Thượng" onerror="this.remove()">👨‍🏫</div>
                 <h3>Phạm Đình Thượng</h3>
                 <span class="teacher-subject">Bộ môn Hóa Học</span>
                 <p style="font-size: 14px; color: var(--text-muted);">Chuyên gia lấy gốc Hóa học cấp tốc, khơi dậy niềm đam mê thực nghiệm môn Hóa.</p>
             </div>
             <div class="teacher-card">
-                <div class="teacher-avatar">👩‍🏫</div>
+                <div class="teacher-avatar"><img src="loan.jpg" alt="Cô Hồ Thị Phương Loan" onerror="this.remove()">👩‍🏫</div>
                 <h3>Hồ Thị Phương Loan</h3>
-                <span class="teacher-subject">Giáo viên tận tâm môn Toán THCS</span>
+                <span class="teacher-subject">Bộ môn Toán THCS</span>
                 <p style="font-size: 14px; color: var(--text-muted);">Đồng hành và xây dựng nền tảng phương pháp tự học vững chắc cho khối THCS.</p>
             </div>
         </div>
@@ -409,14 +518,28 @@
             <h2 class="section-title">Các Lớp Đào Tạo Trọng Tâm</h2>
             <div class="class-grid">
                 <div class="class-card">
-                    <h3>Khối Lớp 9 & Luyện Thi Vào 10</h3>
-                    <p>📍 Tập trung rèn luyện các dạng đề cấu trúc nâng cao Toán - Văn - Anh.</p>
-                    <p>🏆 Mục tiêu: Đỗ nguyện vọng 1 vào các trường THPT Công lập hàng đầu.</p>
+                    <h3>📘 Toán THCS (Lớp 6 – 8)</h3>
+                    <p>📍 Xây nền tảng số học, đại số và hình học vững chắc; hình thành thói quen tự học, trình bày bài cẩn thận.</p>
+                    <p>🏆 Mục tiêu: Học sinh nắm chắc kiến thức trên lớp, tự tin và yêu thích môn Toán.</p>
+                    <div class="class-meta"><span>Cô Loan</span><span>Cơ sở 3</span></div>
                 </div>
                 <div class="class-card">
-                    <h3>Khối Lớp 10 & 11 (Căn Bản - Nâng Cao)</h3>
-                    <p>📍 Xây dựng kiến thức nền tảng vững chắc theo chương trình đổi mới giáo dục.</p>
-                    <p>🏆 Giúp học sinh làm quen tư duy phân tích dữ liệu môn Toán, Lý, Hóa.</p>
+                    <h3>🎯 Toán 9 & Luyện Thi Vào 10</h3>
+                    <p>📍 Hệ thống toàn bộ kiến thức lớp 9, rèn các dạng bài trọng tâm và luyện đề theo cấu trúc thi tuyển sinh.</p>
+                    <p>🏆 Mục tiêu: Đạt điểm cao môn Toán, đỗ nguyện vọng 1 vào các trường THPT công lập.</p>
+                    <div class="class-meta"><span>Cô Loan</span><span>Cơ sở 3</span></div>
+                </div>
+                <div class="class-card">
+                    <h3>📐 Toán THPT (Lớp 10 – 12) & Luyện Thi Tốt Nghiệp</h3>
+                    <p>📍 Học chắc chương trình mới, phát triển tư duy và kỹ năng vận dụng Toán vào tình huống thực tế.</p>
+                    <p>🏆 Mục tiêu: Nắm vững kiến thức từng khối, bứt phá điểm số kỳ thi tốt nghiệp THPT.</p>
+                    <div class="class-meta"><span>Thầy Sơn</span><span>Cơ sở 1</span></div>
+                </div>
+                <div class="class-card">
+                    <h3>⚗️ Hóa Học THPT (Lớp 10 – 12)</h3>
+                    <p>📍 Lấy lại gốc cho học sinh mất căn bản, hiểu bản chất phản ứng, rèn kỹ năng giải bài tập và luyện đề.</p>
+                    <p>🏆 Mục tiêu: Học tốt Hóa trên lớp, đạt điểm cao kỳ thi tốt nghiệp THPT.</p>
+                    <div class="class-meta"><span>Thầy Thượng</span><span>Cô Diệp</span><span>Cơ sở 2</span></div>
                 </div>
             </div>
         </div>
@@ -469,7 +592,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>© 2026 Trung Tâm Giáo Dục. Đồng hành cùng học sinh trên con đường chinh phục tri thức.</p>
+            <p>© 2026 Trung Tâm Thành Sơn. Đồng hành cùng học sinh trên con đường chinh phục tri thức.</p>
             <div class="campus-address-list" id="footer-addresses"></div>
         </div>
     </footer>
@@ -484,7 +607,7 @@
        - Mỗi ô ghi dạng:  "Tên lớp - Giáo viên"     ví dụ: "Toán 12 - Thầy Sơn"
        - Ô trống (không có lớp) thì để:  ""
        - Một ca có 2 lớp học song song thì ngăn cách bằng dấu  ;
-             ví dụ: "Toán 9 - Cô Diệp; Hóa 11 - Thầy Thượng"
+             ví dụ: "Hóa 10 - Cô Diệp; Hóa 11 - Thầy Thượng"
        - Nhớ giữ nguyên dấu ngoặc kép " " và dấu phẩy , giữa các ô.
        ===================================================================== */
 
@@ -513,13 +636,14 @@
         {
             ten: "Cơ sở 2",
             diaChi: "75A Ngô Gia Tự, thôn 9, xã Đức Linh",
-            giaoVien: "Thầy Phạm Đình Thượng (Hóa) · Cô Hồ Thị Ngọc Diệp (Toán)",
+            giaoVien: "Thầy Phạm Đình Thượng (Hóa) · Cô Hồ Thị Ngọc Diệp (Hóa)",
             lich: {
-                ca1: [ "",                 "",                 "",                 "",                 "",                 "Hóa 12 - Thầy Thượng", "Toán 9 - Cô Diệp" ],
-                ca2: [ "",                 "",                 "",                 "",                 "",                 "Luyện thi vào 10 - Cô Diệp", "Hóa 11 - Thầy Thượng" ],
-                ca3: [ "Hóa 10 - Thầy Thượng", "Toán 9 - Cô Diệp", "",             "Hóa 11 - Thầy Thượng", "",           "",                 "" ],
-                ca4: [ "Toán 9 - Cô Diệp", "",                 "Hóa 12 - Thầy Thượng", "",             "Toán 9 - Cô Diệp", "",               "" ],
-                ca5: [ "Hóa 12 - Thầy Thượng", "Luyện thi vào 10 - Cô Diệp; Hóa 11 - Thầy Thượng", "Luyện thi vào 10 - Cô Diệp", "Hóa 10 - Thầy Thượng", "Luyện thi vào 10 - Cô Diệp", "", "" ]
+                //     Thứ 2                   Thứ 3                   Thứ 4                   Thứ 5                   Thứ 6                   Thứ 7                   Chủ nhật
+                ca1: [ "",                     "",                     "",                     "",                     "",                     "Hóa 12 - Thầy Thượng", "Hóa 10 - Cô Diệp" ],
+                ca2: [ "",                     "",                     "",                     "",                     "",                     "Hóa 11 - Cô Diệp",     "Hóa 11 - Thầy Thượng" ],
+                ca3: [ "Hóa 10 - Thầy Thượng", "Hóa 12 - Cô Diệp",     "",                     "Hóa 11 - Thầy Thượng", "",                     "",                     "" ],
+                ca4: [ "Hóa 11 - Cô Diệp",     "",                     "Hóa 12 - Thầy Thượng", "",                     "Hóa 10 - Cô Diệp",     "",                     "" ],
+                ca5: [ "Hóa 12 - Thầy Thượng", "Luyện đề Hóa - Cô Diệp; Hóa 11 - Thầy Thượng", "Hóa 10 - Cô Diệp", "Hóa 10 - Thầy Thượng", "Luyện đề Hóa - Cô Diệp", "", "" ]
             }
         },
         {
