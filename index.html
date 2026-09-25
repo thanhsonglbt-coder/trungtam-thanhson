@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMATH - Trung Tâm Dạy Thêm Toán - Lý - Hóa Cấp 2, 3</title>
+    <title>Trung Tâm Giáo Dục - Thời Khóa Biểu & Lớp Học</title>
     <style>
-        /* --- KHỞI TẠO BIẾN MÀU SẮC (THEME VÀNG GIÁO DỤC) --- */
         :root {
-            --primary-yellow: #facc15; /* Vàng sáng năng lượng */
-            --dark-yellow: #ca8a04;    /* Vàng đậm điểm nhấn */
-            --bg-light-yellow: #fefce8;/* Vàng sữa làm nền nhẹ */
-            --charcoal: #1e293b;       /* Xám than tạo sự nghiêm túc, uy tín */
-            --text-muted: #64748b;     /* Màu chữ phụ */
+            --primary-blue: #0284c7; 
+            --dark-blue: #0c4a6e;    
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;    
+            --text-muted: #64748b;   
             --white: #ffffff;
+            --border-color: #cbd5e1;
         }
 
         * {
@@ -23,13 +23,13 @@
         }
 
         body {
-            background-color: #f8fafc;
-            color: var(--charcoal);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             line-height: 1.6;
         }
 
         .container {
-            width: 90%;
+            width: 92%;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -37,7 +37,7 @@
         /* --- HEADER & NAVIGATION --- */
         header {
             background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -47,310 +47,283 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 18px 0;
         }
 
-        .logo-box {
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .logo-badge {
-            background-color: var(--primary-yellow);
-            color: var(--charcoal);
-            padding: 5px 12px;
-            font-weight: 800;
-            font-size: 22px;
-            border-radius: 6px;
-        }
-
-        .logo-text {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.2;
+            gap: 8px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 25px;
+            gap: 30px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--charcoal);
+            color: var(--text-dark);
             font-weight: 600;
             font-size: 15px;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--dark-yellow);
+            color: var(--primary-blue);
         }
 
-        /* --- HERO BANNER (Ý NGHĨA KHƠI GỢI TƯ DUY) --- */
-        .hero {
-            background: linear-gradient(135deg, var(--white) 50%, var(--bg-light-yellow) 100%);
-            padding: 90px 0;
-            border-bottom: 5px solid var(--primary-yellow);
-        }
-
-        .hero-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 5px;
-            flex-wrap: wrap;
-        }
-
-        .hero-content {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .hero-content h1 {
-            font-size: 42px;
-            color: var(--charcoal);
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-content h1 span {
-            background: linear-gradient(to right, var(--dark-yellow), #eab308);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content p {
-            font-size: 18px;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            max-width: 540px;
-        }
-
-        .btn-main {
-            display: inline-block;
-            background-color: var(--primary-yellow);
-            color: var(--charcoal);
-            padding: 14px 32px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            box-shadow: 0 4px 14px rgba(250, 204, 21, 0.4);
-            transition: transform 0.2s, background 0.3s;
-        }
-
-        .btn-main:hover {
-            background-color: var(--dark-yellow);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        /* --- SECTION CHUNG --- */
+        /* --- SECTIONS --- */
         section {
-            padding: 80px 0;
+            padding: 60px 0;
+            scroll-margin-top: 80px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 32px;
-            margin-bottom: 50px;
-        }
-
-        .section-title span {
-            border-bottom: 4px solid var(--primary-yellow);
-            padding-bottom: 5px;
-        }
-
-        /* --- KHỐI MÔN HỌC (TOÁN - LÝ - HÓA) --- */
-        .subject-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .subject-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
-            border-left: 6px solid var(--primary-yellow);
-            transition: all 0.3s;
-        }
-
-        .subject-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        .subject-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .subject-card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-            color: var(--charcoal);
-        }
-
-        .subject-card ul {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .subject-card ul li {
-            margin-bottom: 8px;
-            color: var(--text-muted);
-            padding-left: 20px;
+            font-size: 28px;
+            color: var(--dark-blue);
+            margin-bottom: 40px;
             position: relative;
+            font-weight: 700;
         }
 
-        .subject-card ul li::before {
-            content: "✓";
-            color: var(--dark-yellow);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            margin: 8px auto 0;
+            border-radius: 2px;
         }
 
-        /* --- KHỐI LỊCH HỌC TỔNG HỢP --- */
-        .schedule-section {
-            background-color: var(--bg-light-yellow);
+        /* --- 1. ĐỘI NGŨ GIÁO VIÊN --- */
+        .teacher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .teacher-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+        }
+
+        .teacher-avatar {
+            width: 80px;
+            height: 80px;
+            background-color: #f0f9ff;
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+        }
+
+        .teacher-card h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .teacher-subject {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: var(--primary-blue);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        /* --- 2. DANH SÁCH LỚP HỌC --- */
+        .class-section {
+            background-color: var(--white);
+        }
+
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .class-card {
+            background: var(--bg-light);
+            border-radius: 10px;
+            padding: 25px;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .class-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-blue);
+        }
+
+        .class-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        /* --- 3. THỜI KHÓA BIỂU (CHUẨN 100% THEO ẢNH) --- */
+        .table-wrapper {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            overflow-x: auto; /* Hỗ trợ kéo ngang mượt mà trên điện thoại */
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            min-width: 800px; /* Đảm bảo bảng không bị méo chữ khi thu nhỏ screen */
+            text-align: center;
         }
 
         th, td {
-            padding: 18px 24px;
-            text-align: left;
-        }
-
-        th {
-            background-color: var(--charcoal);
-            color: var(--primary-yellow);
-            font-weight: 700;
-            font-size: 16px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-
-        .badge {
-            background-color: #fef08a;
-            color: #854d0e;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        /* --- FORM ĐĂNG KÝ (TẠO Ý NGHĨA SẺ CHIA) --- */
-        .register-box {
-            background-color: var(--charcoal);
-            color: var(--white);
-            border-radius: 16px;
-            padding: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .register-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .register-text h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: var(--primary-yellow);
-        }
-
-        .register-form {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .register-form input, .register-form select {
+            border: 1px solid var(--border-color);
             padding: 14px;
-            border-radius: 6px;
-            border: none;
-            outline: none;
             font-size: 15px;
         }
 
-        .btn-submit {
-            background-color: var(--primary-yellow);
-            color: var(--charcoal);
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-            padding: 14px;
-            border-radius: 6px;
-            transition: background 0.3s;
+        th {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            font-weight: 600;
         }
 
-        .btn-submit:hover {
-            background-color: var(--white);
+        /* Ô đặc biệt chứa đường gạch chéo phân tách Khung giờ / Thứ */
+        .diagonal-split {
+            position: relative;
+            background: linear-gradient(to top right, #f1f5f9 49.5%, var(--border-color) 49.5%, var(--border-color) 50.5%, #f1f5f9 50.5%);
+            padding: 0;
+            height: 60px;
+            min-width: 140px;
+        }
+
+        .diagonal-split .top-right {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            font-weight: 600;
+        }
+
+        .diagonal-split .bottom-left {
+            position: absolute;
+            bottom: 5px;
+            left: 15px;
+            font-weight: 600;
+        }
+
+        /* Cấu hình cột thời gian bên trái */
+        .time-col {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: var(--dark-blue);
+            width: 130px;
+        }
+
+        /* Định dạng hiển thị mã lớp trong bảng */
+        .class-code {
+            font-weight: 700;
+            color: var(--primary-blue);
+            background-color: #f0f9ff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
         }
 
         /* --- FOOTER --- */
         footer {
-            background-color: #0f172a;
+            background-color: var(--dark-blue);
             color: #94a3b8;
-            padding: 40px 0;
+            padding: 30px 0;
             text-align: center;
-            border-top: 4px solid var(--primary-yellow);
+            font-size: 14px;
         }
 
-        /* --- ĐÁP ỨNG DI ĐỘNG --- */
         @media (max-width: 768px) {
-            .hero-wrapper { flex-direction: column; text-align: center; }
-            .hero-content h1 { font-size: 32px; }
             nav { flex-direction: column; gap: 15px; }
-            .register-box { padding: 30px; }
-            table, thead, tbody, th, td, tr { display: block; }
-            thead tr { position: absolute; top: -9999px; left: -9999px; }
-            tr { border: 1px solid #e2e8f0; margin-bottom: 10px; border-radius: 8px; padding: 10px; }
-            td { border: none; position: relative; padding-left: 50%; }
-            td:before { position: absolute; top: 10px; left: 10px; width: 45%; padding-right: 10px; white-space: nowrap; font-weight: bold; }
-            td:nth-of-type(1):before { content: "Lớp học:"; }
-            td:nth-of-type(2):before { content: "Lịch học:"; }
-            td:nth-of-type(3):before { content: "Đối tượng:"; }
+            .nav-links { gap: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- THANH DIỀU HƯỚNG -->
+    <!-- THANH MENU ĐIỀU HƯỚNG -->
     <header>
         <div class="container">
             <nav>
-                <div class="logo-box">
-                    <div class="logo-badge">SMATH</div>
-                    <div class="logo-text">HỌC THÊM TOÁN - LÝ - HÓA<br><small>Bứt phá điểm số cấp 2 & 3</small></div>
-                </div>
+                <a href="#" class="logo">🏫 TRUNG TÂM GIÁO DỤC</a>
                 <ul class="nav-links">
-                    <li><a href="#chuongtrinh">Chương Trình</a></li>
-                    <li><a href="#lichhoc">Lịch Khai Giảng</a></li>
-                    <li><a href="#dangky">Tư Vấn Lộ Trình</a></li>
+                    <li><a href="#giaovien">Giáo Viên</a></li>
+                    <li><a href="#lophoc">Lớp Học</a></li>
+                    <li><a href="#thoikhoabieu">Thời Khóa Biểu</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <!-- 1. KHỐI GIỚI THIỆU GIÁO VIÊN -->
+    <section id="giaovien" class="container">
+        <h2 class="section-title">Đội Ngũ Giáo Viên Tâm Huyết</h2>
+        <div class="teacher-grid">
+            <div class="teacher-card">
+                <div class="teacher-avatar">👩‍🏫</div>
+                <h3>Hồ Thị Ngọc Diệp</h3>
+                <span class="teacher-subject">Bộ môn Hóa học</span>
+                <p style="font-size: 14px; color: var(--text-muted);">Hơn 10 năm kinh nghiệm luyện thi trường chuyên, bứt phá tư duy logic.</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-avatar">👨‍🏫</div>
+                <h3>Nguyễn Thành Sơn</h3>
+                <span class="teacher-subject">Bộ môn Toán học</span>
+                <p style="font-size: 14px; color: var(--text-muted);">Phương pháp giảng dạy trực quan, giúp học sinh liên hệ hiện tượng thực tế hiệu quả.</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-avatar">👨‍🏫</div>
+                <h3>Phạm Đình Thượng</h3>
+                <span class="teacher-subject">Bộ môn Hóa Học</span>
+                <p style="font-size: 14px; color: var(--text-muted);">Chuyên gia lấy gốc Hóa học cấp tốc, khơi dậy niềm đam mê thực nghiệm môn Hóa.</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-avatar">👩‍🏫</div>
+                <h3>Hồ Thị Phương Loan</h3>
+                <span class="teacher-subject">Khoa Học Tự Nhiên</span>
+                <p style="font-size: 14px; color: var(--text-muted);">Đồng hành và xây dựng nền tảng phương pháp tự học vững chắc cho khối THCS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. KHỐI DANH SÁCH LỚP HỌC -->
+    <section id="lophoc" class="class-section">
+        <div class="container">
+            <h2 class="section-title">Các Lớp Đào Tạo Trọng Tâm</h2>
+            <div class="class-grid">
+                <div class="class-card">
+                    <h3>Khối Lớp 9 & Luyện Thi Vào 10</h3>
+                    <p>📍 Tập trung rèn luyện các dạng đề cấu trúc nâng cao Toán - Văn - Anh.</p>
+                    <p>🏆 Mục tiêu: Đỗ nguyện vọng 1 vào các trường THPT Công lập hàng đầu.</p>
+                </div>
+                <div class="class-card">
+                    <h3>Khối Lớp 10 & 11 (Căn Bản - Nâng Cao)</h3>
