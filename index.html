@@ -439,6 +439,55 @@
         .fee-desc { margin-top: 14px; font-size: 14px; color: var(--text-muted); }
         .fee-note { margin-top: 30px; background: #f0f9ff; border-left: 5px solid var(--primary-blue); border-radius: 8px; padding: 14px 20px; font-size: 14px; color: var(--text-dark); }
 
+        /* --- CHATBOT TƯ VẤN --- */
+        .cb-launcher {
+            position: fixed; right: 20px; bottom: 20px; z-index: 2000;
+            display: flex; align-items: center; gap: 8px;
+            background: var(--primary-blue); color: #fff; border: none; cursor: pointer;
+            padding: 13px 20px; border-radius: 999px; font-size: 15px; font-weight: 700;
+            box-shadow: 0 8px 24px rgba(2,132,199,0.4); transition: transform 0.2s;
+        }
+        .cb-launcher:hover { transform: translateY(-2px); }
+        .cb-launcher .cb-dot { width: 9px; height: 9px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 3px rgba(74,222,128,0.35); }
+        .cb-panel {
+            position: fixed; right: 20px; bottom: 20px; z-index: 2001;
+            width: 370px; max-width: calc(100vw - 32px); height: 560px; max-height: calc(100vh - 40px);
+            background: #fff; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 16px 48px rgba(12,74,110,0.28);
+            display: none; flex-direction: column;
+        }
+        .cb-panel.open { display: flex; }
+        .cb-head { background: linear-gradient(135deg, #0c4a6e, #0284c7); color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+        .cb-head .cb-ava { width: 38px; height: 38px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        .cb-head b { display: block; font-size: 15px; }
+        .cb-head small { font-size: 12px; color: #bae6fd; }
+        .cb-close { margin-left: auto; background: rgba(255,255,255,0.15); border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%; font-size: 18px; cursor: pointer; }
+        .cb-close:hover { background: rgba(255,255,255,0.3); }
+        .cb-body { flex: 1; overflow-y: auto; padding: 16px; background: #f8fafc; display: flex; flex-direction: column; gap: 10px; }
+        .cb-msg { max-width: 85%; padding: 10px 14px; border-radius: 14px; font-size: 14.5px; line-height: 1.55; word-wrap: break-word; }
+        .cb-msg.bot { background: #fff; border: 1px solid #e2e8f0; color: var(--text-dark); align-self: flex-start; border-bottom-left-radius: 4px; }
+        .cb-msg.user { background: var(--primary-blue); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .cb-msg.bot a { color: var(--primary-blue); font-weight: 600; }
+        .cb-msg ul { margin: 4px 0 4px 18px; }
+        .cb-typing { display: inline-flex; gap: 4px; }
+        .cb-typing span { width: 7px; height: 7px; border-radius: 50%; background: #94a3b8; animation: cbBlink 1.2s infinite; }
+        .cb-typing span:nth-child(2) { animation-delay: 0.2s; }
+        .cb-typing span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes cbBlink { 0%, 80%, 100% { opacity: 0.3; } 40% { opacity: 1; } }
+        .cb-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px 0; background: #fff; }
+        .cb-chip { border: 1px solid #bae6fd; background: #f0f9ff; color: var(--dark-blue); font-size: 13px; font-weight: 600; padding: 5px 11px; border-radius: 999px; cursor: pointer; }
+        .cb-chip:hover { background: #e0f2fe; }
+        .cb-form { display: flex; gap: 8px; padding: 10px 12px 12px; background: #fff; border-top: 1px solid #e2e8f0; }
+        .cb-form input { flex: 1; border: 1px solid var(--border-color); border-radius: 999px; padding: 10px 14px; font-size: 14.5px; outline: none; }
+        .cb-form input:focus { border-color: var(--primary-blue); }
+        .cb-form button { border: none; background: var(--primary-blue); color: #fff; width: 42px; height: 42px; border-radius: 50%; font-size: 17px; cursor: pointer; flex-shrink: 0; }
+        .cb-form button:disabled { opacity: 0.5; cursor: default; }
+        .cb-note { font-size: 11.5px; color: var(--text-muted); text-align: center; padding: 0 12px 8px; background: #fff; }
+        @media (max-width: 480px) {
+            .cb-launcher { right: 14px; bottom: 14px; padding: 12px 16px; }
+            .cb-panel { right: 0; bottom: 0; width: 100vw; max-width: 100vw; height: 100%; max-height: 100%; border-radius: 0; }
+        }
+
         /* --- FOOTER --- */
         footer {
             background-color: var(--dark-blue);
@@ -692,6 +741,25 @@
         </div>
     </footer>
 
+    <!-- CHATBOT TƯ VẤN TUYỂN SINH -->
+    <button class="cb-launcher" id="cb-launcher" type="button" aria-label="Mở chat tư vấn tuyển sinh">
+        <span class="cb-dot"></span> 💬 Tư vấn tuyển sinh
+    </button>
+    <div class="cb-panel" id="cb-panel" role="dialog" aria-label="Chat tư vấn tuyển sinh">
+        <div class="cb-head">
+            <div class="cb-ava">🎓</div>
+            <div><b>Tư vấn tuyển sinh</b><small>Trung Tâm Thành Sơn · Trợ lý AI</small></div>
+            <button class="cb-close" id="cb-close" type="button" aria-label="Đóng">✕</button>
+        </div>
+        <div class="cb-body" id="cb-body"></div>
+        <div class="cb-chips" id="cb-chips"></div>
+        <form class="cb-form" id="cb-form" autocomplete="off">
+            <input id="cb-input" type="text" maxlength="1000" placeholder="Nhập câu hỏi của anh/chị...">
+            <button id="cb-send" type="submit" aria-label="Gửi">➤</button>
+        </form>
+        <div class="cb-note">Trợ lý AI có thể nhầm lẫn. Thông tin chính xác: 0917 257 775.</div>
+    </div>
+
     <script>
     /* =====================================================================
        DỮ LIỆU THỜI KHÓA BIỂU  —  THẦY CHỈ CẦN SỬA PHẦN NÀY
@@ -818,6 +886,137 @@
 
         document.getElementById("footer-addresses").innerHTML =
             CO_SO.map(cs => '📍 <strong>' + esc(cs.ten) + ':</strong> ' + esc(cs.diaChi)).join("<br>");
+    })();
+    </script>
+
+    <script>
+    /* ===================== CHATBOT TƯ VẤN TUYỂN SINH =====================
+       Địa chỉ API: tệp api/tuvan.js chạy trên Vercel (cần GROQ_API_KEY).
+       Nếu đặt API ở tên miền khác, sửa dòng CB_API bên dưới, ví dụ:
+       const CB_API = "https://ten-du-an.vercel.app/api/tuvan";
+       ===================================================================== */
+    const CB_API = "/api/tuvan";
+    const CB_PHONE = "0917 257 775";
+
+    (function () {
+        const panel = document.getElementById("cb-panel");
+        const launcher = document.getElementById("cb-launcher");
+        const body = document.getElementById("cb-body");
+        const form = document.getElementById("cb-form");
+        const input = document.getElementById("cb-input");
+        const sendBtn = document.getElementById("cb-send");
+        const chipsBox = document.getElementById("cb-chips");
+        const history = [];
+        let busy = false, started = false;
+
+        const CHIPS = ["Học phí bao nhiêu?", "Các cơ sở ở đâu?", "Lịch học Toán 12", "Con học lớp 9, nên học lớp nào?", "Đăng ký học thế nào?"];
+
+        // Lịch học lấy trực tiếp từ phần DỮ LIỆU THỜI KHÓA BIỂU ở trên (chỉ sửa một chỗ)
+        function lichHocText() {
+            try {
+                const THU = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"];
+                return CO_SO.map(cs => {
+                    const dong = [];
+                    Object.keys(CA_HOC).forEach(key => {
+                        const ca = CA_HOC[key];
+                        (cs.lich[key] || []).forEach((o, i) => {
+                            if (o && String(o).trim()) dong.push("  - " + THU[i] + ", " + ca.ten + " (" + ca.gio + "): " + o);
+                        });
+                    });
+                    return cs.ten + " – " + cs.diaChi + " – " + cs.giaoVien + "\n" + dong.join("\n");
+                }).join("\n\n");
+            } catch (e) { return ""; }
+        }
+
+        function esc(t) {
+            return String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+        }
+        // Định dạng đơn giản: **đậm**, gạch đầu dòng, xuống dòng, số điện thoại bấm gọi được
+        function format(text) {
+            const lines = esc(text).split(/\n/);
+            let html = "", inList = false;
+            lines.forEach(line => {
+                const m = line.match(/^\s*[-*•]\s+(.*)$/);
+                if (m) { if (!inList) { html += "<ul>"; inList = true; } html += "<li>" + m[1] + "</li>"; }
+                else { if (inList) { html += "</ul>"; inList = false; } html += (line.trim() ? line : "") + "<br>"; }
+            });
+            if (inList) html += "</ul>";
+            html = html.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(<br>)+$/, "");
+            html = html.replace(/0917[ .]?257[ .]?775/g, '<a href="tel:0917257775">0917 257 775</a>');
+            return html;
+        }
+
+        function addMsg(role, text) {
+            const div = document.createElement("div");
+            div.className = "cb-msg " + role;
+            div.innerHTML = role === "bot" ? format(text) : esc(text);
+            body.appendChild(div);
+            body.scrollTop = body.scrollHeight;
+            return div;
+        }
+
+        function renderChips() {
+            chipsBox.innerHTML = "";
+            CHIPS.forEach(c => {
+                const b = document.createElement("button");
+                b.type = "button"; b.className = "cb-chip"; b.textContent = c;
+                b.onclick = () => send(c);
+                chipsBox.appendChild(b);
+            });
+        }
+
+        function open() {
+            panel.classList.add("open");
+            launcher.style.display = "none";
+            if (!started) {
+                started = true;
+                addMsg("bot", "Xin chào anh/chị! 👋 Em là trợ lý tư vấn tuyển sinh của **Trung Tâm Thành Sơn**.\nEm có thể giúp về lớp học, giáo viên, lịch học, học phí và các cơ sở. Anh/chị cần tư vấn gì ạ?");
+                renderChips();
+            }
+            setTimeout(() => input.focus(), 50);
+        }
+        function close() {
+            panel.classList.remove("open");
+            launcher.style.display = "";
+        }
+
+        async function send(text) {
+            text = String(text || "").trim();
+            if (!text || busy) return;
+            busy = true; sendBtn.disabled = true;
+            chipsBox.innerHTML = "";
+            addMsg("user", text);
+            input.value = "";
+            const typing = document.createElement("div");
+            typing.className = "cb-msg bot";
+            typing.innerHTML = '<span class="cb-typing"><span></span><span></span><span></span></span>';
+            body.appendChild(typing); body.scrollTop = body.scrollHeight;
+
+            let reply;
+            try {
+                const r = await fetch(CB_API, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: text, history: history.slice(-12), lichHoc: lichHocText() })
+                });
+                const data = await r.json().catch(() => ({}));
+                if (!r.ok || !data.text) throw new Error(data.error || ("HTTP " + r.status));
+                reply = data.text;
+                history.push({ role: "user", content: text }, { role: "assistant", content: reply });
+            } catch (e) {
+                console.error("Chatbot lỗi:", e);
+                reply = "Xin lỗi anh/chị, hiện em chưa kết nối được máy chủ tư vấn. 🙏\nAnh/chị vui lòng gọi hoặc nhắn Zalo ông **Hồ Quốc Thái – " + CB_PHONE + "** để được tư vấn trực tiếp ạ.";
+            }
+            typing.remove();
+            addMsg("bot", reply);
+            busy = false; sendBtn.disabled = false;
+            input.focus();
+        }
+
+        launcher.addEventListener("click", open);
+        document.getElementById("cb-close").addEventListener("click", close);
+        form.addEventListener("submit", e => { e.preventDefault(); send(input.value); });
+        document.addEventListener("keydown", e => { if (e.key === "Escape" && panel.classList.contains("open")) close(); });
     })();
     </script>
 
