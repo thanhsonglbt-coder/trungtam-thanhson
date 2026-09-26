@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trung Tâm Thành Sơn - Học thật, Hiểu sâu</title>
+    <link rel="icon" href="logo.jpg">
     <style>
         :root {
             --primary-blue: #0284c7; 
@@ -57,8 +58,19 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
+
+        .logo-img {
+            height: 52px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* Có logo thì ẩn biểu tượng 🏫; không có logo thì hiện lại */
+        .logo-img + .logo-emoji { display: none; }
 
         .nav-links {
             list-style: none;
@@ -81,7 +93,7 @@
         /* --- SECTIONS --- */
         section {
             padding: 60px 0;
-            scroll-margin-top: 80px;
+            scroll-margin-top: 95px;
         }
 
         .section-title {
@@ -447,9 +459,24 @@
 
         @media (max-width: 768px) {
             nav { flex-direction: column; gap: 15px; }
+            .logo-img { height: 44px; }
             .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
         }
     </style>
+    <script>
+        /* Tự dò ảnh: nếu không thấy ten.jpg thì thử lần lượt .jpeg, .png, .JPG ...
+           Không thấy file nào thì hiện biểu tượng mặc định. */
+        function thuAnhKhac(img) {
+            var duoi = ["jpg", "jpeg", "png", "JPG", "JPEG", "PNG", "jpg.jpg", "webp"];
+            var i = Number(img.getAttribute("data-i") || 0) + 1;
+            if (i < duoi.length) {
+                img.setAttribute("data-i", i);
+                img.src = img.getAttribute("data-base") + "." + duoi[i];
+            } else {
+                img.remove();
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -457,7 +484,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">🏫 TRUNG TÂM THÀNH SƠN</a>
+                <a href="#" class="logo"><img src="logo.jpg" data-base="logo" alt="Logo Trung Tâm Thành Sơn" class="logo-img" onerror="thuAnhKhac(this)"><span class="logo-emoji">🏫</span> TRUNG TÂM THÀNH SƠN</a>
                 <ul class="nav-links">
                     <li><a href="#gioithieu">Giới Thiệu</a></li>
                     <li><a href="#chutrungtam">Chủ Trung Tâm</a></li>
@@ -528,7 +555,7 @@
     <section id="chutrungtam" class="container">
         <h2 class="section-title">Chủ Trung Tâm</h2>
         <div class="owner-card">
-            <div class="owner-photo"><img src="thai.jpg" alt="Ông Hồ Quốc Thái" onerror="this.remove()">👨‍💼</div>
+            <div class="owner-photo"><img src="thai.jpg" data-base="thai" alt="Ông Hồ Quốc Thái" onerror="thuAnhKhac(this)">👨‍💼</div>
             <div>
                 <span class="owner-role">CHỦ TRUNG TÂM THÀNH SƠN</span>
                 <h3>Ông Hồ Quốc Thái</h3>
@@ -553,25 +580,25 @@
         <h2 class="section-title">Đội Ngũ Giáo Viên Tâm Huyết</h2>
         <div class="teacher-grid">
             <div class="teacher-card">
-                <div class="teacher-avatar"><img src="diep.jpg" alt="Cô Hồ Thị Ngọc Diệp" onerror="this.remove()">👩‍🏫</div>
+                <div class="teacher-avatar"><img src="diep.jpg" data-base="diep" alt="Cô Hồ Thị Ngọc Diệp" onerror="thuAnhKhac(this)">👩‍🏫</div>
                 <h3>Hồ Thị Ngọc Diệp</h3>
                 <span class="teacher-subject">Bộ môn Hóa Học</span>
                 <p style="font-size: 14px; color: var(--text-muted);">Hơn 10 năm kinh nghiệm luyện thi, giúp học sinh hiểu bản chất Hóa học và bứt phá điểm số.</p>
             </div>
             <div class="teacher-card">
-                <div class="teacher-avatar"><img src="son.jpg" alt="Thầy Nguyễn Thành Sơn" onerror="this.remove()">👨‍🏫</div>
+                <div class="teacher-avatar"><img src="son.jpg" data-base="son" alt="Thầy Nguyễn Thành Sơn" onerror="thuAnhKhac(this)">👨‍🏫</div>
                 <h3>Nguyễn Thành Sơn</h3>
                 <span class="teacher-subject">Bộ môn Toán Học</span>
                 <p style="font-size: 14px; color: var(--text-muted);">Phương pháp giảng dạy trực quan, giúp học sinh vận dụng Toán vào các tình huống thực tế.</p>
             </div>
             <div class="teacher-card">
-                <div class="teacher-avatar"><img src="thuong.jpg" alt="Thầy Phạm Đình Thượng" onerror="this.remove()">👨‍🏫</div>
+                <div class="teacher-avatar"><img src="thuong.jpg" data-base="thuong" alt="Thầy Phạm Đình Thượng" onerror="thuAnhKhac(this)">👨‍🏫</div>
                 <h3>Phạm Đình Thượng</h3>
                 <span class="teacher-subject">Bộ môn Hóa Học</span>
                 <p style="font-size: 14px; color: var(--text-muted);">Chuyên gia lấy gốc Hóa học cấp tốc, khơi dậy niềm đam mê thực nghiệm môn Hóa.</p>
             </div>
             <div class="teacher-card">
-                <div class="teacher-avatar"><img src="loan.jpg" alt="Cô Hồ Thị Phương Loan" onerror="this.remove()">👩‍🏫</div>
+                <div class="teacher-avatar"><img src="loan.jpg" data-base="loan" alt="Cô Hồ Thị Phương Loan" onerror="thuAnhKhac(this)">👩‍🏫</div>
                 <h3>Hồ Thị Phương Loan</h3>
                 <span class="teacher-subject">Bộ môn Toán THCS</span>
                 <p style="font-size: 14px; color: var(--text-muted);">Đồng hành và xây dựng nền tảng phương pháp tự học vững chắc cho khối THCS.</p>
